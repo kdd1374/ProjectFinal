@@ -21,7 +21,6 @@
 </script>
 
 <center>
-<form action="GoodsDelServlet" method="post">
 <table width="750px" cellspacing="0" cellpadding="0" style="margin-top:30px;" align="center" >
 <tr>
 <td align="center" width="60px"><span style="font-size:12px;"><a href="GoodsUpdateServlet">전체보기</a></spna></td>
@@ -34,10 +33,10 @@
 <td align="center" width="60px"><span style="font-size:12px;"><a href="GoodsUpdateServlet?gCategory=healthy">건강영양제</spna></td>
 </tr>
 <tr>
-<td colspan="7"><hr></td>
+<td colspan="8" align="center"><hr></td>
 </tr>
 </table>
-<table width="1200px" cellspacing="0" cellpadding="0" style="margin-top:20px;">
+<table width="1200px" cellspacing="0" cellpadding="0" style="margin-top:20px; margin-bottom:30px;">
 <tr>
 <c:forEach var="i" items="${goodsAll}">
  <td align="center" valign="center">
@@ -66,6 +65,12 @@
 </c:if>
  </c:forEach>
  </tr>
+  <tr>
+ <td colspan="9"><hr width="750px">
+ </td></tr>
+  <tr>
+ <td colspan="9" align="center"><button type="button" onclick="location.href='GoodsUpdateFormServlet?new=new'">
+ <span style="font-size:12px;">상품등록</span></button>
+ </td></tr>
 </table>
-</form>
 </center>

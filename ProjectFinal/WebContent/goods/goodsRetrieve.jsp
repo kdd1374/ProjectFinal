@@ -44,6 +44,11 @@
 			   
 		   });
 		 
+		 $("#favor").on("click",function(){
+			   $("form").attr("action","FavorCartServlet");
+			   
+		   });
+		 
 	});
 </script>
 <style>
@@ -155,5 +160,7 @@
 	<br> <button id="buy">구매</button>
 	&nbsp;&nbsp;
 	<button id="cart">장바구니</button>
+	<button id="favor">관심목록</button>
+	
 </form>
     

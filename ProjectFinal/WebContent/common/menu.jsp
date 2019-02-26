@@ -6,7 +6,7 @@ MemberDTO dto = (MemberDTO)session.getAttribute("logindto");
 %>
 
    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -29,13 +29,16 @@ if(dto.getMas()!=null){%>
 <span style="font-size:12px;"><b>관리자</b> 님 어서오세요</span><br>
 <span style="font-size:12px;">
 <a href="LogOutServlet">로그아웃</a></span><br>
-<span style="font-size:12px;"><a href="GoodsUpdateServlet">상품관리</a></span>&nbsp;&nbsp;
+<span style="font-size:12px;"><a href="GoodsUpdateServlet">상품관리</a></span><br>
+<span style="font-size:12px;"><a href="MemberListServlet">회원관리</a></span>
 <%} else {%>
 <span style="font-size:12px;"><b><%=dto.getUsername() %></b> 님 어서오세요</span>&nbsp;
 <span style="font-size:12px;">
 <a href="LogOutServlet">로그아웃</a></span><br>
 <span style="font-size:12px;"><a href="CartListServlet">장바구니</a></span>&nbsp;&nbsp;
+<span style="font-size:12px;"><a href="FavorListServlet">찜 리스트</a></span>&nbsp;&nbsp;
 <span style="font-size:12px;"><a href="MypageServlet">마이페이지</a></span>
+<span style="font-size:12px;"><a href="OrderListDetailServlet">주문내역</a></span>
 <%} %>
 <%} %>
 </div>
@@ -45,7 +48,7 @@ if(dto.getMas()!=null){%>
 <span style="font-size:12px;"><a href="GoodsListServlet?gCategory=snack">간식</a></span><br>
 <span style="font-size:12px;"><a href="GoodsListServlet?gCategory=tower">캣타워</a></span><br>
 <span style="font-size:12px;"><a href="GoodsListServlet?gCategory=scratcher">스크래쳐</a></span><br>
-<span style="font-size:12px;"><a href="GoodsListServlet?gCategory=send">모레</a></span><br>
+<span style="font-size:12px;"><a href="GoodsListServlet?gCategory=send">모래</a></span><br>
 <span style="font-size:12px;"><a href="GoodsListServlet?gCategory=toy">장난감</a></span><br>
 <span style="font-size:12px;"><a href="GoodsListServlet?gCategory=healthy">건강영양제</a></span>
 </div>

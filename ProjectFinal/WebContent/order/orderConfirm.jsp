@@ -35,15 +35,44 @@ $(document).ready(function(){
 			$("#phone").val("");
 		}
 	});
-	
+ 	$("form").on("submit",function(){
+		var name = $("#orderName").val();
+		var post = $("#sample4_postcode").val();
+		var addr1 = $("#sample4_roadAddress").val();
+		var addr2 = $("#sample4_jibunAddress").val();
+		var phone = $("#phone").val();
+		if(name.length == 0){
+			alert("이름를 입력해주세요");
+			$("#orderName").focus();
+			return false;
+		}else if(post.length == 0 || addr1.length ==0){
+			alert("배송주소를 입력해주세요");
+			$("#sample4_postcode").focus();
+			return false;
+		}else if(addr2.length ==0){
+			alert("상세주소를 입력해주세요");
+			$("#sample4_jibunAddress").focus();
+			return false;
+		}else if(name.length == 0){
+			alert("휴대전화를 입력해주세요");
+			$("#phone").focus();
+			return false;
+		}
+	});
 });
 </script>
-<c:forEach var="cList" items="${cList}" varStatus="status">
+
 <form name="myForm" method="get" action="CartOrderDoneServlet">
-<%-- <input type="hidden" name="gCode" value="${cList.gCode}">
+<c:forEach var="cList" items="${cList}" varStatus="status">
+<input type="hidden" name="gCode" value="${cList.gCode}">
 <input type="hidden" name="gPrice" value="${cList.gPrice}">
 <input type="hidden" name="gAmount" value="${cList.gAmount}">
-<input type="hidden" name="gImage" value="${cList.gImage}"> --%>
+<input type="hidden" name="gImage" value="${cList.gImage}">
+<input type="hidden" name="gCategory" value="${cList.gCategory}">
+<input type="hidden" name="gName" value="${cList.gName}">
+<input type="hidden" name="username" value="${cList.username}">
+<input type="hidden" name="email1" value="${cList.email1}">
+<input type="hidden" name="email2" value="${cList.email2}">
 
 	<table width="750px" cellspacing="0" cellpadding="0" align="center">
 
@@ -102,9 +131,9 @@ $(document).ready(function(){
 
 
 					<tr>
-						<td height="30"></td>
+						<td height="30" class="td_default" align="right" colspan="2">배송비 : 2500원</td>
 						<td class="td_default" align="right">총 결제 금액 :</td>
-						<td class="td_default" align='right'>${cList.gPrice*cList.gAmount}원</td>
+						<td class="td_default" align='right'>${cList.gPrice*cList.gAmount +2500}원</td>
 					</tr>
 				</table> <tr>
 			<td>
@@ -140,7 +169,7 @@ $(document).ready(function(){
 					</td>
 					<td height="35" class="td_default">
 						<input class="input_default" type="text" id="mname" size="20"
-							maxlength="20" value="${cList.username}"></input>
+							maxlength="20" value="${cList.username}" readonly></input>
 					</td>
 				</tr>
 				<tr>
@@ -173,7 +202,7 @@ $(document).ready(function(){
 					</td>
 					<td height="35" class="td_default">
 						<input class="input_default" type="text" id="mphone" size="15"
-							maxlength="15" value="${cList.phone}"></input>
+							maxlength="15" value="${cList.phone}" readonly></input>
 						
 					</td>
 				</tr>

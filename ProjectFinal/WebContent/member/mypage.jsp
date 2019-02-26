@@ -14,7 +14,7 @@ if(mesg != null){
 %>
 alert("<%=mesg%>");
 <%}%>
-	$(docu.ready(function(){
+	$(document).ready(function(){
 		
 		$("#update").on("click",function(event){
 			
@@ -24,7 +24,6 @@ alert("<%=mesg%>");
 			
 		});
 		
-	
 	});
 
 </script>
@@ -50,7 +49,7 @@ alert("<%=mesg%>");
  <tr>
  <td width="378.5px">
  </td>
-  <td align = "center" valign="center">
+  <td align = "center" valign="center" colspan="2">
    <table width="443px" cellspacing="0" cellpadding="0" style="margin:0;" border="1" rules="none" bordercolor="#fffb8b">
     <tr>
      <td height="30px">
@@ -138,8 +137,10 @@ alert("<%=mesg%>");
  <tr>
  <td width="378.5px">
  </td>
-  <td align="right">
-	<a href="#" id ="update">회원정보수정</a><a href="MemberDelFormServlet" id ="memberDel">회원탈퇴</a>
+ <td width="292px">
+ </td>
+  <td align="right" valign="top" bgcolor="#fffb8b">
+	<a href="#" id ="update"><img src="images/updateMember.gif"></a><a href="MemberDelFormServlet" id ="memberDel"><img src="images/signout2.gif"></a>
   </td>
  <td width="378.5px">
  </td>

@@ -1,40 +1,66 @@
-
+<%@page import="java.util.List"%>
 <%@page import="com.dto.MemberDTO"%>
 <%@page import="com.dto.CartDTO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
+
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
-<script>
-$(document).ready(function(){
-	
-	$("#same").on("click",function(){
-		if(this.checked){
-			$("#orderName").val($("#mname").val());
-			$("#sample4_postcode").val($("#mpost").val());
-			$("#sample4_roadAddress").val($("#maddress1").val());
-			$("#sample4_jibunAddress").val($("#maddress2").val());
-			$("#phone").val($("#mphone").val());
-		}else{
-			$("#orderName").val("");
-			$("#sample4_postcode").val("");
-			$("#sample4_roadAddress").val("");
-			$("#sample4_jibunAddress").val("");
-			$("#phone").val("");
-		}
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		console.log("ready");
+		$("#same").on("click",function(){
+			console.log("same");
+			if(this.checked){
+				$("#orderName").val($("#mname").val());
+				$("#sample4_postcode").val($("#mpost").val());
+				$("#sample4_roadAddress").val($("#maddress1").val());
+				$("#sample4_jibunAddress").val($("#maddress2").val());
+				$("#phone").val($("#mphone").val());
+			}else{
+				$("#orderName").val("");
+				$("#sample4_postcode").val("");
+				$("#sample4_roadAddress").val("");
+				$("#sample4_jibunAddress").val("");
+				$("#phone").val("");
+			}
+		});
+		$("form").on("submit",function(){
+			var name = $("#orderName").val();
+			var post = $("#sample4_postcode").val();
+			var addr1 = $("#sample4_roadAddress").val();
+			var addr2 = $("#sample4_jibunAddress").val();
+			var phone = $("#phone").val();
+			if(name.length == 0){
+				alert("이름를 입력해주세요");
+				$("#orderName").focus();
+				return false;
+			}else if(post.length == 0 || addr1.length ==0){
+				alert("배송주소를 입력해주세요");
+				$("#sample4_postcode").focus();
+				return false;
+			}else if(addr2.length ==0){
+				alert("상세주소를 입력해주세요");
+				$("#sample4_jibunAddress").focus();
+				return false;
+			}else if(name.length == 0){
+				alert("휴대전화를 입력해주세요");
+				$("#phone").focus();
+				return false;
+			}
+		});
 	});
-	
-});
 </script>
 
 
-<form name="myForm" method="GET" action="CartOrderAllDoneServlet">
+
+<form name="myForm" method="GET"  action="CartOrderAllDoneServlet">
 
     
-	<table width="80%" cellspacing="0" cellpadding="0">
+	<table width="750px" cellspacing="0" cellpadding="0" align="center">
 
 		<tr>
 			<td height="30">
@@ -60,7 +86,7 @@ $(document).ready(function(){
 
 		<tr>
 			<td>
-				<table width="100%" cellspacing="0" cellpadding="0">
+				<table width="750px" cellspacing="0" cellpadding="0">
 					<tr>
 						<td class="td_default" align="center"><strong>주문번호</strong></td>
 						<td class="td_default" align="center" colspan="2"><strong>상품정보</strong></td>
@@ -75,44 +101,43 @@ $(document).ready(function(){
 						</td>
 					</tr>
 <!--  변수 선언 -->					
-		
-   <c:forEach var="cartList" items="${cartList}" varStatus="status">		
+<c:set var="totalSum" value="0" />					
+			<c:forEach var="xxx" items="${cartList}" varStatus="status">		
 			
 <!-- 누적 -->
-							
-<input type="hidden" name="userid" value="${memberDTO.userid}" >
-<input type="hidden" name="num" value="${cartList.num}" >
-<input type="hidden" name="gCode" value="${cartList.gCode}" >
-<input type="hidden" name="gImage" value="${cartList.gImage}" >
-<input type="hidden" name="gName" value="${cartList.gName}" >
-<input type="hidden" name="gSize" value="${cartList.gSize}" >
-<input type="hidden" name="gColor" value="${cartList.gColor}" >
-<input type="hidden" name="gPrice" value="${cartList.gPrice}" >
-<input type="hidden" name="gAmount" value="${cartList.gAmount}" >   
+		<c:set var="totalSum" value="${totalSum + xxx.gPrice * xxx.gAmount }" />					
+<input type="hidden" name="gCode" value="${xxx.gCode}">
+<input type="hidden" name="gPrice" value="${xxx.gPrice}">
+<input type="hidden" name="gAmount" value="${xxx.gAmount}">
+<input type="hidden" name="gImage" value="${xxx.gImage}">
+<input type="hidden" name="gCategory" value="${xxx.gCategory}">
+<input type="hidden" name="gName" value="${xxx.gName}">
+<input type="hidden" name="username" value="${xxx.username}">
+<input type="hidden" name="email1" value="${xxx.email1}">
+<input type="hidden" name="email2" value="${xxx.email2}">
 					<tr>
-						<td class="td_default" width="80">${cartList.num}</td>
+						<td class="td_default" width="80">${xxx.gCode}</td>
 						<td class="td_default" width="80"><img
-							src="images/items/${cartList.gImage}.gif" border="0" align="center"
+							src="images/${xxx.gCategory }/${xxx.gImage}.jpg" border="0" align="center"
 							width="80" /></td>
 						<td class="td_default" width="300" style='padding-left: 30px'>
-						${cartList.gName}
-							<br> <font size="2" color="#665b5f">[옵션 : 사이즈(${cartList.gSize})
-								, 색상(${cartList.gColor})]
+						${xxx.gName}
+							<br> <font size="2" color="#665b5f">[옵션 : 사이즈()
+								, 색상()]
 						</font></td>
 						<td class="td_default" align="center" width="110">
-						${cartList.gPrice}
+						<fmt:formatNumber value="${xxx.gPrice}" type="currency" />
 						
 						</td>
-						<td class="td_default" align="center" width="90">${cartList.gAmount}</td>
+						<td class="td_default" align="center" width="90">${xxx.gAmount}</td>
 
 					</tr>
-
-     </c:forEach>           
+                </c:forEach>
 					<tr>
 						<td height="30"></td>
 						<td class="td_default" align="right">총 결제 금액 :</td>
 						<td class="td_default" align='right'>
-						￦172,200원</td>
+						<fmt:formatNumber value="${totalSum}" type="currency" />원</td>
 					</tr>
 				</table>
 		<tr>
@@ -147,13 +172,13 @@ $(document).ready(function(){
 						</td>
 						<td height="35" class="td_default"><input
 							class="input_default" type="text" id="mname" size="20"
-							maxlength="20" value="${memberDTO.username}"></input></td>
+							maxlength="20" value="${memberDTO.username}" readonly></input></td>
 					</tr>
 					<tr>
 						<td height="35" class="td_default">우편번호</td>
 						<td height="35" class="td_default"><input
 							class="input_default" type="text" id="mpost" size="6"
-							maxlength="6" value="${memberDTO.post}" readonly></td>
+							maxlength="6" value="${memberDTO.post}" readonly></input></td>
 					</tr>
 					<tr>
 						<td height="35" class="td_default">주 소</td>
@@ -168,7 +193,7 @@ $(document).ready(function(){
 						<td height="35" class="td_default">휴대전화</td>
 						<td height="35" class="td_default"><input
 							class="input_default" type="text" id="mphone" size="15"
-							maxlength="15" value="${memberDTO.phone1+memberDTO.phone2+memberDTO.phone3}"></input>
+							maxlength="15" value="${memberDTO.phone}" readonly></input>
 
 						</td>
 					</tr>
@@ -211,12 +236,14 @@ $(document).ready(function(){
 					<tr>
 						<td height="35" class="td_default">우편번호</td>
 						<td height="35" class="td_default">
-							<!-- 다음주소 시작--> 	<input type="text" name="post" id="sample4_postcode" placeholder="우편번호">
+							<!-- 다음주소 시작--> 
+								<input type="text" name="post" id="sample4_postcode" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
 <span id="guide" style="color:#999"></span>
-<br> <!-- 다음주소 끝 -->
+<br>
+							 <!-- 다음주소 끝 -->
 						</td>
 					</tr>
 
@@ -264,15 +291,13 @@ $(document).ready(function(){
 
 		<tr>
 			<td class="td_default" align="center"><input type='button'
-				value='취소' onclick="javascript:history.back()"> 
-				<input
-				type='submit' value='결제하기'></td>
+				value='취소' onclick="javascript:history.back()">
+				<input type='submit' value='결제하기'></td>
 		</tr>
 
 	</table>
 
 </form>
-
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.

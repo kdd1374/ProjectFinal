@@ -40,7 +40,7 @@
 		});
 
 		//전체선택
-		$("#allCheck").on("click", function() {
+		$("#allCheck").on("click", function(e) {
 			var result = this.checked;
 			$(".check").each(function(idx, data) {
 				this.checked = result;
@@ -48,17 +48,11 @@
 		});
 
 		//전체cart 삭제
-		/* $("#delAllCart").on("click", function() {
-			var num = [];
-			$("input:checkbox[name='check']:checked").each(function(idx, ele) {
-				gCode[idx] = $(this).val();
-			});
-			console.log(gCode);
-			location.href = "CartDelAllServlet?data=" + gCode;
-		}); */
-		//전체cart 삭제
 		$("#delAllCart").on("click", function() {
-
+			if($(".check").is(":checked")==false){
+				alert("삭제 할 상품을 선택해 주세요");
+				return false;
+			}
 			$("form").attr("action", "CartDelAllServlet");
 			$("form").submit();// trigger
 		});
@@ -70,6 +64,10 @@
 		});
 		//전체주문버튼
 		$("#orderAllConfirm").on("click", function() {
+			if($(".check").is(":checked")==false){
+				alert("주문 할 상품을 선택해 주세요");
+				return false;
+			}
 			$("form").attr("action","CartOrderAllConfirmServlet");
 			$("form").submit();//trigger
 		});
@@ -138,7 +136,7 @@
 			type="checkbox" name="check" id="check81" class="check"
 			value="${x.gCode}">
 		</td>
-		<td class="td_default" width="80">${x.gCode}</td>
+		<td class="td_default" width="80" name="td_default" value="${x.gCode}">${x.gCode}</td>
 		<td class="td_default" width="80"><img
 			src="images/${x.gCategory}/${x.gImage}.jpg" border="0" align="center"
 			width="80" /></td>
@@ -174,10 +172,9 @@
 	</tr>
 
 	<tr>
-		<td align="center" colspan="5"><a class="a_black" id="orderAllConfirm"> 전체 주문하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<a class="a_black" href="#" id="delAllCart"> 전체 삭제하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<a class="a_black" href="#" id="delAllCart2"> 전체 삭제하기2 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<a class="a_black" href="goodsList.jsp"> 계속 쇼핑하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<td align="center" colspan="5"><a class="a_black" id="orderAllConfirm"> 선택한 상품 주문 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class="a_black" href="#" id="delAllCart"> 선택한 상품 삭제 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class="a_black" href="GoodsListServlet"> 계속 쇼핑하기 </a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
 	</tr>
 	<tr>
