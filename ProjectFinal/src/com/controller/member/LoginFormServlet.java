@@ -36,7 +36,7 @@ public class LoginFormServlet extends HttpServlet {
 				request.setAttribute("mesg", mesg);
 				RequestDispatcher dis = request.getRequestDispatcher("login.jsp");
 				dis.forward(request, response);
-			}else {
+			}else if(mdto !=null) {
 				session.setAttribute("logindto", mdto);
 				response.sendRedirect("Main");
 			}

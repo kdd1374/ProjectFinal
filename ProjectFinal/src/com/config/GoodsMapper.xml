@@ -12,6 +12,12 @@
 	where gCategory=#{gCategory}
 	</select>
 	
+	<select id="goodsTotal" parameterType="string" resultType="int">
+	select count(*) count
+	from goods
+	where gCategory=#{gCategory}
+	</select>
+	
 	<select id="goodsAll" resultType="GoodsDTO">
 	select gCode, gCategory, gName, gPrice, gImage, gCountry, gCompany, gDate
 	from goods

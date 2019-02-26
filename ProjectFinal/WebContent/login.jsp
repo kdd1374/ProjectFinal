@@ -12,111 +12,7 @@ String mesg=(String)request.getAttribute("mesg");
 alert("<%=mesg%>")
 <%}%>
 </script>
-<style type="text/css">
-a:link {                         
-         text-decoration:none;    
-         } 
-    a:visited { 
-         color:black; 
-         } 
-     a:hover { 
-         color:black; 
-         } 
-   a:active { 
-         color:black; 
-         } 
-	body{
-	min-width: 800px;
-	margin: 0;
-	}
-	div{
-	 display: block;
-    }
-	
-	}
-	#main{
-	width: 100%;
-    padding: 40px 270px;
-    box-sizing: border-box;
-    overflow: hidden;
-	}
-	#wrap{
-	display: block;
-    padding: 0;
-    margin: 0 auto;
-    width:100%;
-    max-width: 1200px;
-    position:relative;
-	}
-	
-	#wrapbox{
-	
-	clear: both;
-    position: relative;
-    margin: 0 auto;
-    margin-top:150px;
-    padding: 0;
-    text-align: center;
-    width: 100%;
-	}
-	
-
-	#wrap-left{
-	width: 230px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 99;
-    height: 100%;
-    padding: 25px;
-    box-sizing: border-box;
-    letter-spacing: 0.2px;
-    background-color:rgba(255,251,139,1);
-	}
-	@media screen and (max-width: 1200px)
-	{#wrap-right{display:none;}
-	}
-	#wrap-right{
-	width: 230px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 99;
-    height: 100%;
-    padding: 25px;
-    box-sizing: border-box;
-    letter-spacing: 0.2px;
-    background-color:rgba(255,251,139,1);
-	}
-	
-	#mainbanner{
-	width:100%;
-	float:left;
-	margin:0;
-	padding:20px 0 0 0;
-	}
-	
-	
-	#member{
-	width:100%;
-	float:left;
-	margin:0px;
-	margin-top:20px;
-	}
-	#menu{
-	width:100%;
-	float:left;
-	margin:0px;
-	margin-top:30px;
-	}
-		#notis{
-	width:100%;
-	float:left;
-	margin:0px;
-	margin-top:30px;
-	}
-
-</style>
+<link rel="stylesheet" type="text/css" href="common/main.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -143,6 +39,6 @@ a:link {
 </div>
 </div>
 </div>
-
+</div>
 </body>
 </html>

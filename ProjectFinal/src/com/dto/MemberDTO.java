@@ -15,7 +15,7 @@ public class MemberDTO {
 	private String email2;
 	private String mas;
 	private String hiredate;
-	private int mileage;
+	private String mileage;
 	
 	public MemberDTO(String userid, String ssn, String post, String addr1, String addr2, String phone, String email1,
 			String email2) {
@@ -35,11 +35,11 @@ public class MemberDTO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getMileage() {
+	public String getMileage() {
 		return mileage;
 	}
 
-	public void setMileage(int mileage) {
+	public void setMileage(String mileage) {
 		this.mileage = mileage;
 	}
 

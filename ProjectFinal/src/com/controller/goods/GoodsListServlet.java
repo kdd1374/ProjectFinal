@@ -17,10 +17,26 @@ import com.service.GoodsService;
 public class GoodsListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
+		String cur = request.getParameter("curpage");
 		String gCategory = request.getParameter("gCategory");
 		GoodsService ser = new GoodsService();
-		List<GoodsDTO> list = ser.goodsList(gCategory);
+		if(gCategory == null) {
+			gCategory = "rice";
+		}
+		int curpage = 0;
+		if(cur ==null) {
+			curpage = 1;
+		}else {
+			curpage = Integer.parseInt(cur);
+		}
+		int purpage = 12;
+		int total = ser.goodsTotal(gCategory)/purpage;
+		if(ser.goodsTotal(gCategory)%purpage != 0) {
+			total++;
+		}
+		List<GoodsDTO> list = ser.goodsList(gCategory, curpage, purpage);
+		request.setAttribute("goodsTotal", total);
+		request.setAttribute("curpage", curpage);
 		request.setAttribute("category", gCategory);
 		request.setAttribute("goodsList", list);
 		RequestDispatcher dis = request.getRequestDispatcher("goodsList.jsp");

@@ -3,6 +3,7 @@ package com.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.dto.MemberDTO;
@@ -14,8 +15,9 @@ public class MemberDAO {
 		return dto;
 	}
 	
-	public List<MemberDTO> selectAll(SqlSession session) {
-		List<MemberDTO> list = session.selectList("MemberMapper.selectAll");
+	public List<MemberDTO> selectAll(SqlSession session,int curpage, int purpage) {
+		int offset = (curpage-1)*purpage;
+		List<MemberDTO> list = session.selectList("MemberMapper.selectAll",null,new RowBounds(offset, purpage));
 		return list;
 	}
 	
@@ -41,6 +43,17 @@ public class MemberDAO {
 	public MemberDTO idSerch(SqlSession session, String userid) {
 		MemberDTO dto = session.selectOne("MemberMapper.idSerch", userid);
 		return dto;
+	}
+	
+	public List<MemberDTO> memberListSerch(SqlSession session, HashMap<String, String> map, int curpage, int purpage) {
+		int offset = (curpage-1)*purpage;
+		List<MemberDTO> list = session.selectList("MemberMapper.memberListSerch", map,new RowBounds(offset, purpage));
+		return list;
+	}
+	
+	public int total(SqlSession session) {
+		int n = session.selectOne("MemberMapper.total");
+		return n;
 	}
 	
 }

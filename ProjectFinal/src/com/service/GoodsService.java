@@ -13,12 +13,12 @@ import com.dto.MemberDTO;
 
 public class GoodsService {
 
-	public List<GoodsDTO> goodsList(String gCategory) {
+	public List<GoodsDTO> goodsList(String gCategory,int curpage, int purpage) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<GoodsDTO> list = null;
 		try {
 			GoodsDAO dao = new GoodsDAO();
-			list = dao.goodsList(session, gCategory);
+			list = dao.goodsList(session, gCategory, curpage, purpage);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -79,6 +79,20 @@ public class GoodsService {
 		}catch(Exception e) {
 			e.printStackTrace();
 			session.rollback();
+		}finally {
+			session.close();
+		}
+		return n;
+	}
+	
+	public int goodsTotal(String gCategory) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			GoodsDAO dao = new GoodsDAO();
+			n = dao.goodsTotal(session, gCategory);
+		}catch(Exception e) {
+			e.printStackTrace();
 		}finally {
 			session.close();
 		}

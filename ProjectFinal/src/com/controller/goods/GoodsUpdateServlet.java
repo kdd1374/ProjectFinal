@@ -19,10 +19,22 @@ import com.service.GoodsService;
 public class GoodsUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String gCategory=request.getParameter("gCategory");
+		String cur = request.getParameter("curpage");
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO)session.getAttribute("logindto");
 		GoodsService ser = new GoodsService();
 		List<GoodsDTO> list = null;
+		int curpage = 0;
+		if(cur ==null) {
+			curpage = 1;
+		}else {
+			curpage = Integer.parseInt(cur);
+		}
+		int purpage = 20;
+		int total = ser.goodsTotal(gCategory)/purpage;
+		if(ser.goodsTotal(gCategory)%purpage != 0) {
+			total++;
+		}
 		if(dto==null) {
 			String mesg = "관리자로그인이 필요합니다";
 			request.setAttribute("mesg", mesg);
@@ -34,7 +46,7 @@ public class GoodsUpdateServlet extends HttpServlet {
 		RequestDispatcher dis = request.getRequestDispatcher("goodsUpdate.jsp");
 		dis.forward(request, response);
 		}else {
-		list = ser.goodsList(gCategory);
+		list = ser.goodsList(gCategory, curpage, purpage);
 		request.setAttribute("goodsAll", list);
 		RequestDispatcher dis = request.getRequestDispatcher("goodsUpdate.jsp");
 		dis.forward(request, response);

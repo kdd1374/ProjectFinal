@@ -26,12 +26,12 @@ public class MemberService {
 		return dto;
 	}
 	
-	public List<MemberDTO> selectAll() {
+	public List<MemberDTO> selectAll(int curpage, int purpage) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		List<MemberDTO> list = null;
 		try {
 			MemberDAO dao = new MemberDAO();
-			list = dao.selectAll(session);
+			list = dao.selectAll(session, curpage, purpage);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -112,5 +112,32 @@ public class MemberService {
 			session.close();
 		}
 		return dto;
+	}
+	
+	public List<MemberDTO> memberListSerch(HashMap<String, String> map,int curpage, int purpage){
+		SqlSession session =MySqlSessionFactory.getSession();
+		List<MemberDTO> list = null;
+		try {
+			MemberDAO dao = new MemberDAO();
+			list = dao.memberListSerch(session, map, curpage, purpage);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return list;
+	}
+	public int total() {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			n = dao.total(session);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return n;
 	}
 }
