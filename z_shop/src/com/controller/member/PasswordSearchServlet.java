@@ -14,12 +14,12 @@ import javax.servlet.http.HttpSession;
 import com.dto.MemberDTO;
 import com.service.MemberService;
 
-@WebServlet("/IdSearchServlet")
-public class IdSearchServlet extends HttpServlet {
+@WebServlet("/PasswordSearchServlet")
+public class PasswordSearchServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("idsearch.jsp");
+		response.sendRedirect("passwordSearch.jsp");
 		
 		
 	}

@@ -41,7 +41,7 @@ public class CartOrderConfirmServlet extends HttpServlet {
 			nextPage = "orderConfirm.jsp";
 
 	      }else {
-			  nextPage = "LoginUIServlet";
+			  nextPage = "LoginServlet";
 			  session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		  }
 		

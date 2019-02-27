@@ -41,8 +41,8 @@ public class FavorListServlet extends HttpServlet {
 			nextPage = "favorList.jsp";
 	        
 	      }else {
-	    	  nextPage="cartList.jsp";
-			  session.setAttribute("mesg", "비회원 카트리스트입니다.");
+	    	  nextPage="LoginServlet";
+			  session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 			  
 		  }
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);

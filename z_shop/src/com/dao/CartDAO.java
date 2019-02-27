@@ -6,8 +6,19 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.dto.CartDTO;
+import com.dto.DoneDTO;
 
 public class CartDAO {
+	
+	public int orderAllDone(SqlSession session, List<DoneDTO> x) {
+		int n = session.insert("CartMapper.orderAllDone", x);
+		return n;
+	}
+	
+	public int orderDone(SqlSession session, DoneDTO dto) {
+		int n = session.insert("CartMapper.orderDone", dto);
+		return n;
+	}
 	
 	public List<CartDTO> orderAllConfirm(SqlSession session, List<String> list) {
 		List<CartDTO> n = session.selectList("CartMapper.orderAllConfirm", list);
@@ -23,11 +34,6 @@ public class CartDAO {
 		CartDTO cdto = session.selectOne("CartMapper.cartbygCode",gCode);
 		return cdto;
 	}
-
-	public int cartUpdate2(SqlSession session,HashMap<String, Object> map) {
-		int n = session.update("CartMapper.cartUpdate", map);
-		return n;
-	}
 	
 	public List<CartDTO> retrieveUpdate(SqlSession session, String gCode) {
 		List<CartDTO> list = session.selectList("CartMapper.retrieveUpdate",gCode);
@@ -35,13 +41,13 @@ public class CartDAO {
 	}
 	
 	
-	public int cartUpdate(SqlSession session,HashMap<String, String> map) {
+	public int cartUpdate(SqlSession session,HashMap<String, Object> map) {
 		int n = session.update("CartMapper.cartUpdate", map);
 		return n;
 	}
 
-	public String cartDel(SqlSession session, String gCode) {
-		String n = session.selectOne("CartMapper.cartDel",gCode);
+	public int cartDel(SqlSession session, String gCode) {
+		int n = session.delete("CartMapper.cartDel",gCode);
 		return n;
 	}
 	

@@ -90,4 +90,21 @@
 	and email2 = #{email2}
 	</select>
 	
+	
+	<select id="passSearch" parameterType="map" resultType="MemberDTO">
+	select userid,passwd, username,post, addr1, addr2, phone,
+	email1, email2, mas, ssn, hiredate, mileage
+	from member
+	where username = #{username} 
+	and userid = #{userid}
+	and email1 = #{email1}
+	and email2 = #{email2}
+	</select>
+	
+	<update id="passwordUpdate" parameterType="map">
+	update member
+	set passwd = #{passwd}
+	where userid = #{userid}
+	</update>
+	
 </mapper>

@@ -18,14 +18,8 @@ import com.service.GoodsService;
 @WebServlet("/GoodsUpdateFormServlet")
 public class GoodsUpdateFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String gCode=request.getParameter("gCode");
 		HttpSession session = request.getSession();
-		String ne = request.getParameter("new");
-		System.out.println(ne+"\tne");
-		if(ne!=null) {
-			session.removeAttribute("updateForm");
-		}
 		MemberDTO dto = (MemberDTO)session.getAttribute("logindto");
 		GoodsService ser = new GoodsService();
 		GoodsDTO list = null;
@@ -39,7 +33,7 @@ public class GoodsUpdateFormServlet extends HttpServlet {
 		dis.forward(request, response);
 		}else {
 		list = ser.codeSerch(gCode);
-		session.setAttribute("updateForm", list);
+		request.setAttribute("updateForm", list);
 		RequestDispatcher dis = request.getRequestDispatcher("goodsUpdateForm.jsp");
 		dis.forward(request, response);
 		}

@@ -57,8 +57,7 @@ public class FavorCartServlet extends HttpServlet {
 	        
             if(list.size()!=0 && gCode.equals(list.get(0).getgCode())) {
             	
-     	       String n = service.favorDel(gCode);
-   			session.setAttribute("mesgcart",gCode+" Favor삭제" );
+   			session.setAttribute("mesgcart",gCode+" 는 찜 리스트에 있는 상품입니다." );
     		    
             }else if(list.size() ==0 ){
     	  		xx.setgAmount(gAmount);
@@ -83,7 +82,7 @@ public class FavorCartServlet extends HttpServlet {
 			nextPage = "GoodsRetrieveServlet?gCode="+gCode;
 	      }else {
 	    	  
-			  nextPage = "LoginUIServlet";
+			  nextPage = "LoginServlet";
 			  session.setAttribute("mesgcart", "로그인이 필요한 작업입니다.");
 		  }
 	     

@@ -36,7 +36,9 @@ if(dto.getMas()!=null){%>
 <span style="font-size:12px;">
 <a href="LogOutServlet">로그아웃</a></span><br>
 <span style="font-size:12px;"><a href="CartListServlet">장바구니</a></span>&nbsp;&nbsp;
+<span style="font-size:12px;"><a href="FavorListServlet">위시 리스트</a></span>&nbsp;&nbsp;
 <span style="font-size:12px;"><a href="MypageServlet">마이페이지</a></span>
+<span style="font-size:12px;"><a href="OrderListDetailServlet">주문내역</a></span>
 <%} %>
 <%} %>
 </div>
@@ -57,7 +59,7 @@ if(dto.getMas()!=null){%>
 <span style="font-size:12px;"><a href="QnAServlet">1:1문의</a></span><br>
 </div>
 </div>
-
+<div id="wrap-right">
 </div>
 
     

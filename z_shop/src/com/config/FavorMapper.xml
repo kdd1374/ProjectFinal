@@ -4,32 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="FavorMapper">
    
-    <select id="favorAllConfirm" parameterType="arraylist" resultType="FavorDTO">
-	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
-	         addr1, addr2, phone, email1, email2
-	  from favor
-	  where gCode
-	  IN
-	 <foreach collection="list" item="item" open="(" separator="," close=")">
-       #{item}
-     </foreach>
-	</select>
-   
-   <delete id="favorAllDel" parameterType="arraylist">
-     delete from favor
-     where gCode
-     IN
-     <foreach collection="list" item="item" open="(" separator="," close=")">
-       #{item}
-     </foreach>
-   </delete>
-   
-   <select id="favrbygCode" parameterType="string" resultType="FavorDTO">
-	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
-	         addr1, addr2, phone, email1, email2
-	  from favor
-	  where gCode = #{gCode}
-	</select>
    
    <select id="retrieveFavor" parameterType="string" resultType="FavorDTO">
 	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
@@ -38,13 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  where gCode = #{gCode}
 	</select>
    
-   <update id="favorUpdate" parameterType="hashmap">
-  update favor
-  set gAmount = #{gAmount}
- where gCode = #{gCode}
-</update>
    
-   <delete id="favorDel" parameterType="String">
+   <delete id="favorDel" parameterType="string">
     delete
     from favor
     where gCode = #{gCode}

@@ -14,15 +14,17 @@ import javax.servlet.http.HttpSession;
 import com.dto.MemberDTO;
 import com.service.MemberService;
 
-@WebServlet("/IdSearchServlet")
-public class IdSearchServlet extends HttpServlet {
+@WebServlet("/UpdatePasswdServlet")
+public class UpdatePasswdServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("idsearch.jsp");
+		response.sendRedirect("passwordForm.jsp");
 		
+		}
+      
 		
-	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

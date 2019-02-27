@@ -35,7 +35,7 @@
  <td align="left" width="178px" height="65px" valign="top"><span style="font-size:12px;">${i.gName}</span></td>
  </tr>
  <tr>
-<td align="left"><span style="font-size:12px; color:#f0e928"><hr style="margin:0;"><b>${i.gPrice}원</b></span><br></td>
+<td align="left"><span style="font-size:12px; color:#f0e928"><hr style="margin:0;">${i.gPrice}원</span><br></td>
  </table>
  </td>
  <c:if test="${status.count%4==0}">

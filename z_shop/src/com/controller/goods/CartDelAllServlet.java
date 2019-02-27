@@ -1,4 +1,4 @@
-package com.controller.favor;
+package com.controller.goods;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -16,14 +16,13 @@ import com.dto.CartDTO;
 import com.dto.GoodsDTO;
 import com.dto.MemberDTO;
 import com.service.CartService;
-import com.service.FavorService;
 import com.service.GoodsService;
 
 /**
  * Servlet implementation class GoodsListServlet
  */
-@WebServlet("/FavorDelAllServlet")
-public class FavorDelAllServlet extends HttpServlet {
+@WebServlet("/CartDelAllServlet")
+public class CartDelAllServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -35,13 +34,13 @@ public class FavorDelAllServlet extends HttpServlet {
        
 	       List<String> list= Arrays.asList(data);
 	  
-	       FavorService service = new FavorService();
-	       int n = service.favorAllDel(list);
+	       CartService service = new CartService();
+	       int n = service.cartAllDel(list);
 	       
-			nextPage = "FavorListServlet";
+			nextPage = "CartListServlet";
 
 	      }else {
-			  nextPage = "LoginUIServlet";
+			  nextPage = "LoginServlet";
 			  session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		  }
 		

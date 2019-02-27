@@ -32,7 +32,7 @@ public class CartUpdateServlet extends HttpServlet {
 	      if(dto!=null) {
 	       String gCode = request.getParameter("gCode");
 	       String gAmount = request.getParameter("gAmount");
-	      HashMap<String, String> map = new HashMap<>();
+	      HashMap<String, Object> map = new HashMap<>();
 	      map.put("gCode", gCode);
 	      map.put("gAmount", gAmount);
 	       
@@ -40,7 +40,7 @@ public class CartUpdateServlet extends HttpServlet {
 	      int n= service.cartUpdate(map);
 
 	      }else {
-			  nextPage = "LoginUIServlet";
+			  nextPage = "LoginServlet";
 			  session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 			  response.sendRedirect(nextPage);
 		  }

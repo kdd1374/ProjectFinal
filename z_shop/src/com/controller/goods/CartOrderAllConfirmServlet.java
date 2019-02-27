@@ -1,7 +1,7 @@
 package com.controller.goods;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,12 +17,13 @@ import com.dto.GoodsDTO;
 import com.dto.MemberDTO;
 import com.service.CartService;
 import com.service.GoodsService;
+import com.service.MemberService;
 
 /**
  * Servlet implementation class GoodsListServlet
  */
-@WebServlet("/CartListServlet")
-public class CartListServlet extends HttpServlet {
+@WebServlet("/CartOrderAllConfirmServlet")
+public class CartOrderAllConfirmServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -30,20 +31,27 @@ public class CartListServlet extends HttpServlet {
 	      MemberDTO dto = (MemberDTO)session.getAttribute("logindto");
 		 String nextPage = null;
 	      if(dto!=null) {
-	        String userid =dto.getUserid();
-	        CartService service =new CartService();
-	        List<CartDTO> list = service.cartList(userid);
-	        
-	        
-	        request.setAttribute("cartList", list);
-			nextPage = "cartList.jsp";
-	        
+
+	    	String [] data=request.getParameterValues("check"); 
+	    	List<String> list= Arrays.asList(data);  
+	    	CartService cService = new CartService();
+	    	List<CartDTO> cList = cService.orderAllConfirm(list);
+	    	request.setAttribute("cartList", cList);  
+	    	
+	    	MemberService mService = new MemberService();
+	    	String userid=dto.getUserid();
+	    	MemberDTO mDTO = mService.idSerch(userid);
+	    	request.setAttribute("memberDTO", mDTO);  
+	    	
+	    	
+			nextPage = "orderAllConfirm.jsp";
+
 	      }else {
-	    	  nextPage="LoginServlet";
+			  nextPage = "LoginServlet";
 			  session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
-			  
 		  }
-		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
+		
+	  	RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
 		
 	}

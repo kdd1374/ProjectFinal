@@ -1,4 +1,4 @@
-package com.controller.favor;
+package com.controller.goods;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,14 +16,13 @@ import com.dto.CartDTO;
 import com.dto.GoodsDTO;
 import com.dto.MemberDTO;
 import com.service.CartService;
-import com.service.FavorService;
 import com.service.GoodsService;
 
 /**
  * Servlet implementation class GoodsListServlet
  */
-@WebServlet("/FavorUpdateServlet")
-public class FavorUpdateServlet extends HttpServlet {
+@WebServlet("/RetrieveUpdateServlet")
+public class RetrieveUpdateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -33,15 +32,15 @@ public class FavorUpdateServlet extends HttpServlet {
 	      if(dto!=null) {
 	       String gCode = request.getParameter("gCode");
 	       String gAmount = request.getParameter("gAmount");
-	      HashMap<String, String> map = new HashMap<>();
+	      HashMap<String, Object> map = new HashMap<>();
 	      map.put("gCode", gCode);
 	      map.put("gAmount", gAmount);
 	       
-	      FavorService service = new FavorService();
-	      int n= service.favorUpdate(map);
+	      CartService service = new CartService();
+	      int n= service.cartUpdate(map);
 
 	      }else {
-			  nextPage = "LoginUIServlet";
+			  nextPage = "LoginServlet";
 			  session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 			  response.sendRedirect(nextPage);
 		  }

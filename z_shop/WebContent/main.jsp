@@ -115,7 +115,7 @@ session.removeAttribute("delmesg");
 	}
  
   a:link {                         
-         text-decoration:none;    
+         color:black;text-decoration:none;    
          } 
     a:visited { 
          color:black; 
@@ -146,7 +146,6 @@ session.removeAttribute("delmesg");
 <img src="images/main.PNG">
 </a>
 </div>
-
 <jsp:include page="common/menu.jsp" flush="true" />
 </div>
 <div id="wrap-right">

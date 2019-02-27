@@ -32,12 +32,12 @@ public class CartDelServlet extends HttpServlet {
 	       String gCode = request.getParameter("gCode");
 	       
 	       CartService service = new CartService();
-	       String n = service.cartDel(gCode);
+           int n = service.cartDel(gCode);
 	       
 			nextPage = "CartListServlet";
 
 	      }else {
-			  nextPage = "LoginUIServlet";
+			  nextPage = "LoginServlet";
 			  session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		  }
 		

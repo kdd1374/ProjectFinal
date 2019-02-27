@@ -8,7 +8,14 @@
 <title>Insert title here</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-
+<%
+String searchmesg = (String)session.getAttribute("searchmesg");
+if(searchmesg !=null){
+%>
+alert("<%=searchmesg%>")
+<%}
+session.removeAttribute("searchmesg");
+%>
 	$(document).ready(function(){
 		
 		$("#find").on("click",function(event){
@@ -21,7 +28,7 @@
 				 $("#email").focus();
 				event.preventDefault();
 			}else{
-				location.href="FindIdServlet?username="+$("#username").val()+"&email="+$("#email").val();
+				location.href="IdSearchFormServlet?username="+$("#username").val()+"&email="+$("#email").val();
 			}
 		});
 		

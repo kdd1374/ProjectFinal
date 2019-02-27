@@ -43,6 +43,9 @@
 			   $("form").attr("action","GoodsCartServlet");
 			   
 		   });
+		 $("#favor").on("click",function(){
+			   $("form").attr("action","FavorCartServlet");
+		   });
 		 
 	});
 </script>
@@ -153,9 +156,10 @@
 		</tr>
 	</table>
 
-	<br> <button id="buy">구매</button>
+	<br> <button id="favor">관심목록</button>
 	&nbsp;&nbsp;
 	<button id="cart">장바구니</button><br><br>
-	<img src="images/goodsbar.gif">
+	<img src="images/goodsbar.gif"><br>
+	<img src="images/goodsbar.gif"><br>
 </form>
     

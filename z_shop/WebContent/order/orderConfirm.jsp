@@ -35,17 +35,46 @@ $(document).ready(function(){
 			$("#phone").val("");
 		}
 	});
-	
+ 	$("form").on("submit",function(){
+		var name = $("#orderName").val();
+		var post = $("#sample4_postcode").val();
+		var addr1 = $("#sample4_roadAddress").val();
+		var addr2 = $("#sample4_jibunAddress").val();
+		var phone = $("#phone").val();
+		if(name.length == 0){
+			alert("이름를 입력해주세요");
+			$("#orderName").focus();
+			return false;
+		}else if(post.length == 0 || addr1.length ==0){
+			alert("배송주소를 입력해주세요");
+			$("#sample4_postcode").focus();
+			return false;
+		}else if(addr2.length ==0){
+			alert("상세주소를 입력해주세요");
+			$("#sample4_jibunAddress").focus();
+			return false;
+		}else if(name.length == 0){
+			alert("휴대전화를 입력해주세요");
+			$("#phone").focus();
+			return false;
+		}
+	});
 });
 </script>
-<c:forEach var="cList" items="${cList}" varStatus="status">
+
 <form name="myForm" method="get" action="CartOrderDoneServlet">
-<%-- <input type="hidden" name="gCode" value="${cList.gCode}">
+<c:forEach var="cList" items="${cList}" varStatus="status">
+<input type="hidden" name="gCode" value="${cList.gCode}">
 <input type="hidden" name="gPrice" value="${cList.gPrice}">
 <input type="hidden" name="gAmount" value="${cList.gAmount}">
-<input type="hidden" name="gImage" value="${cList.gImage}"> --%>
+<input type="hidden" name="gImage" value="${cList.gImage}">
+<input type="hidden" name="gCategory" value="${cList.gCategory}">
+<input type="hidden" name="gName" value="${cList.gName}">
+<input type="hidden" name="username" value="${cList.username}">
+<input type="hidden" name="email1" value="${cList.email1}">
+<input type="hidden" name="email2" value="${cList.email2}">
 
-	<table width="750px" cellspacing="0" cellpadding="0" align="center">
+	<table width="850px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-left: auto; margin-right: auto;">
 
 		<tr>
 			<td height="30">
@@ -58,32 +87,19 @@ $(document).ready(function(){
 		<tr>
 			<td height="15">
 		</tr>
-
-		<tr>
-			<td>
-				<hr size="1" color="CCCCCC">
-			</td>
-		</tr>
-
 		<tr>
 			<td height="5">
 		</tr>
 
 		<tr>
 			<td>
-				<table width="750px" cellspacing="0" cellpadding="0" align="center">
-					<tr>
-						<td class="td_default" align="center"><strong>상품번호</strong></td>
-						<td class="td_default" align="center" colspan="2"><strong>상품정보</strong></td>
-						<td class="td_default" align="center"><strong>판매가</strong></td>
-						<td class="td_default" align="center" colspan="2"><strong>수량</strong></td>
+				<table width="850px" cellspacing="0" cellpadding="0" align="center">
+					<tr height="41">
+						<td class="td_default" align="center" bgcolor="#fffb8b"><strong>상품번호</strong></td>
+						<td class="td_default" align="center" colspan="2" bgcolor="#fffb8b"><strong>상품정보</strong></td>
+						<td class="td_default" align="center" bgcolor="#fffb8b"><strong>판매가</strong></td>
+						<td class="td_default" align="center" colspan="2" bgcolor="#fffb8b"><strong>수량</strong></td>
 
-					</tr>
-
-					<tr>
-						<td colspan="4">
-							<hr size="1" color="CCCCCC">
-						</td>
 					</tr>
 
 					<tr>
@@ -102,9 +118,9 @@ $(document).ready(function(){
 
 
 					<tr>
-						<td height="30"></td>
+						<td height="30" class="td_default" align="right" colspan="2">배송비 : 2500원</td>
 						<td class="td_default" align="right">총 결제 금액 :</td>
-						<td class="td_default" align='right'>${cList.gPrice*cList.gAmount}원</td>
+						<td class="td_default" align='right'>${cList.gPrice*cList.gAmount +2500}원</td>
 					</tr>
 				</table> <tr>
 			<td>
@@ -131,49 +147,48 @@ $(document).ready(function(){
 
 	<tr>
 		<td>
-			<table width="100%" cellspacing="0" cellpadding="0" border="1"
-					style="border-collapse:collapse" bordercolor="#CCCCCC">
+			<table width="70%" cellspacing="0" cellpadding="0" border="1"
+					style="border-collapse: collapse" bordercolor="#fffb8b" align="center">
 				<tr>
-					<td width="125" height="35" class="td_default">
-						
+					<td width="125" height="35" class="td_default" bgcolor="#fffb8b">
 						이 름
 					</td>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" align="left">&nbsp;&nbsp;
 						<input class="input_default" type="text" id="mname" size="20"
-							maxlength="20" value="${cList.username}"></input>
+							maxlength="20" value="${cList.username}" readonly></input>
 					</td>
 				</tr>
 				<tr>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" bgcolor="#fffb8b">
 						
 						우편번호
 					</td>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" align="left">&nbsp;&nbsp;
 						<input class="input_default" type="text" id="mpost" size="6"
 							maxlength="6" value="${cList.post}" readonly>
 						
 					</td>
 				</tr>
 				<tr>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" bgcolor="#fffb8b">
 						
 						주 소
 					</td>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" align="left">&nbsp;&nbsp;
 						<input class="input_default" type="text" id="maddress1" size="35"
 							maxlength="200" value="${cList.addr1}" readonly></input><br>
-						<input class="input_default" type="text" id="maddress2" size="35"
+						&nbsp;&nbsp;&nbsp;<input class="input_default" type="text" id="maddress2" size="35"
 							maxlength="200" value="${cList.addr2}" readonly></input>
 					</td>
 				</tr>
 				
 				<tr>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" bgcolor="#fffb8b">
 						휴대전화
 					</td>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" align="left">&nbsp;&nbsp;
 						<input class="input_default" type="text" id="mphone" size="15"
-							maxlength="15" value="${cList.phone}"></input>
+							maxlength="15" value="${cList.phone}" readonly></input>
 						
 					</td>
 				</tr>
@@ -181,11 +196,6 @@ $(document).ready(function(){
 		</td>
 	</tr>
 <!--  고객 정보 끝-->
-	<tr>
-		<td height="30">
-	
-		</tr>
-
 	<tr> 
 		<td class="td_default">
 			 <input type="checkbox" name="same" id="same"> 배송지가 동일할 경우 선택하세요.
@@ -209,27 +219,24 @@ $(document).ready(function(){
 
 	<tr>
 		<td>
-			<table width="100%" cellspacing="0" cellpadding="0" border="1"
-					style="border-collapse:collapse" bordercolor="#CCCCCC">
+			<table width="70%" cellspacing="0" cellpadding="0" border="1"
+					style="border-collapse: collapse" bordercolor="#fffb8b" align="center">
 				<tr>
-					<td width="125" height="35" class="td_default">
-						
-						이 름
-					</td>
-					<td height="35" class="td_default">
+					<td width="125" height="35" class="td_default" bgcolor="#fffb8b">이 름</td>
+					<td height="35" class="td_default" align="left">&nbsp;&nbsp;
 						<input class="input_default" type="text" id="orderName"
 							name="orderName" size="20" maxlength="20" value=""></input>
 					</td>
 				</tr>
 				<tr>
-					<td height="35" class="td_default">
-						
-						우편번호
-					</td>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" bgcolor="#fffb8b">우편번호</td>
+					<td height="35" class="td_default" align="left">&nbsp;&nbsp;
 <!-- 다음주소 시작-->
 	<input type="text" name="post" id="sample4_postcode" placeholder="우편번호" readonly="readonly">
-<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br></td></tr>
+<tr>
+<td height="35" class="td_default" bgcolor="#fffb8b">주소</td>
+<td height="35" class="td_default" align="left">&nbsp;&nbsp;
 <input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
 <span id="guide" style="color:#999"></span>
@@ -239,11 +246,11 @@ $(document).ready(function(){
 				</tr>
 				
 				<tr>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" bgcolor="#fffb8b">
 						
 						휴대전화
 					</td>
-					<td height="35" class="td_default">
+					<td height="35" class="td_default" align="left">&nbsp;&nbsp;
 						<input class="input_default" type="text" id="phone"
 							name="phone" size="15" maxlength="15" value=""></input>
 					
@@ -262,13 +269,12 @@ $(document).ready(function(){
 		<td><b>결제수단</b></td>
 	</tr>
 
-	<tr>
-		<td height="15">
-	
+		<tr>
+			<td height="7">
 		</tr>
 	<tr>
 		<td>
-			<table width="100%" cellspacing="0" cellpadding="0" border="1"
+			<table width="100%" cellspacing="0" cellpadding="0" border="0"
 					style="border-collapse:collapse" bordercolor="#CCCCCC">
 				<tr>
 					<td width="125" height="35" class="td_default">
@@ -284,11 +290,10 @@ $(document).ready(function(){
 			</table>							
 		</td>
 	</tr>
-	
-	<tr>
-		<td height="30">
-	
+		<tr>
+			<td height="15">
 		</tr>
+
 
 
 	<tr>
@@ -297,6 +302,9 @@ $(document).ready(function(){
 			<input type='submit' value='결제하기'>
 		</td>
 	</tr>
+        <tr>
+			<td height="30">
+		</tr>
 
 </table>
 </c:forEach>

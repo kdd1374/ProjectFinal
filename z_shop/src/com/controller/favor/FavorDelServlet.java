@@ -28,12 +28,12 @@ public class FavorDelServlet extends HttpServlet {
 	       String gCode = request.getParameter("gCode");
 	       
 	       FavorService service = new FavorService();
-	       String n = service.favorDel(gCode);
+	       int n = service.favorDel(gCode);
 	       
 			nextPage = "FavorListServlet";
 
 	      }else {
-			  nextPage = "LoginUIServlet";
+			  nextPage = "LoginServlet";
 			  session.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		  }
 		

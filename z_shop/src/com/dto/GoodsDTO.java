@@ -11,24 +11,12 @@ public class GoodsDTO {
 	private String gCountry;
 	private String gCompany;
 	private String gDate;
-	
-	public GoodsDTO(String gCode, String gCategory, String gName, int gPrice, String gImage, String gCountry,
-			String gCompany, String gDate) {
-		super();
-		this.gCode = gCode;
-		this.gCategory = gCategory;
-		this.gName = gName;
-		this.gPrice = gPrice;
-		this.gImage = gImage;
-		this.gCountry = gCountry;
-		this.gCompany = gCompany;
-		this.gDate = gDate;
-	}
 	public GoodsDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public GoodsDTO(int gAmount, String gCode, String gCategory, String gName, int gPrice, String gImage, String gCountry,
+	
+	public GoodsDTO( String gCode, String gCategory, String gName, int gPrice, String gImage, String gCountry,
 			String gCompany, String gDate) {
 		super();
 		this.gAmount = gAmount;

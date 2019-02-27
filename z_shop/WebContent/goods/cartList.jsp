@@ -73,7 +73,8 @@
 		});
 	});
 </script>
-<table width="750px" cellspacing="0" cellpadding="0" border="0" align="center">
+
+<table width="850px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-left: auto; margin-right: auto;">
 
 	<tr>
 		<td height="30">
@@ -81,7 +82,7 @@
 
 	<tr>
 		<td colspan="5" class="td_default">&nbsp;&nbsp;&nbsp; <font
-			size="5"><b>- 장바구니-</b></font> &nbsp;
+			size="5"><b>장바구니</b></font> &nbsp;
 		</td>
 	</tr>
 
@@ -89,37 +90,24 @@
 		<td height="15">
 	</tr>
 
-	<tr>
-		<td colspan="10">
-			<hr size="1" color="CCCCCC">
-		</td>
-	</tr>
 
 	<tr>
 		<td height="7">
 	</tr>
 
-	<tr>
-		<td class="td_default" align="center"><input type="checkbox"
-			name="allCheck" id="allCheck"> <strong>전체선택</strong></td>
-		<td class="td_default" align="center"><strong>상품번호</strong></td>
-		<td class="td_default" align="center" colspan="2"><strong>상품정보</strong></td>
-		<td class="td_default" align="center"><strong>판매가</strong></td>
-		<td class="td_default" align="center" colspan="2"><strong>수량</strong></td>
-		<td class="td_default" align="center"><strong>합계</strong></td>
-		<td></td>
+	<tr height="41">
+		<th class="td_default" align="center" bgcolor="#fffb8b">전체선택<br>
+		<input type="checkbox" name="allCheck" id="allCheck" checked="checked"></th>
+		<th class="td_default" align="center" bgcolor="#fffb8b">상품번호</th>
+		<th class="td_default" align="center" colspan="2" bgcolor="#fffb8b">상품정보</th>
+		<th class="td_default" align="center" bgcolor="#fffb8b">판매가</th>
+		<th class="td_default" align="center" colspan="2" bgcolor="#fffb8b">수량</th>
+		<th class="td_default" align="center" bgcolor="#fffb8b">합계</th>
+		<th bgcolor="#fffb8b" colspan="2"></th>
 	</tr>
 
 	<tr>
 		<td height="7">
-	</tr>
-
-
-
-	<tr>
-		<td colspan="10">
-			<hr size="1" color="CCCCCC">
-		</td>
 	</tr>
 
 
@@ -131,10 +119,10 @@
 
 
 	<tr>
-		<td class="td_default" width="80">
+		<td class="td_default" width="100">
 			<!-- checkbox는 체크된 값만 서블릿으로 넘어간다. 따라서 value에 삭제할 num값을 설정한다. --> <input
 			type="checkbox" name="check" id="check81" class="check"
-			value="${x.gCode}">
+			value="${x.gCode}" checked="checked">
 		</td>
 		<td class="td_default" width="80" name="td_default" value="${x.gCode}">${x.gCode}</td>
 		<td class="td_default" width="80"><img

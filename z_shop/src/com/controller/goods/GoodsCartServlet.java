@@ -58,7 +58,7 @@ public class GoodsCartServlet extends HttpServlet {
     	        HashMap<String, Object> map = new HashMap<>();
     	        map.put("gCode", gCode);
     		    map.put("gAmount", gAmount+gAmount2);
-    		    int n = service.cartUpdate2(map);
+    		    int n = service.cartUpdate(map);
     		    
             }else if(list.size() ==0 ){
     	  		xx.setgAmount(gAmount);
@@ -78,13 +78,13 @@ public class GoodsCartServlet extends HttpServlet {
     	  		int n=service.cartAdd(xx);
             }
 	        
-	  		
-			nextPage = "GoodsRetrieveServlet?gCode="+gCode;
+
 			session.setAttribute("mesgcart",gCode+" Cart저장성공" );
+			nextPage = "GoodsRetrieveServlet?gCode="+gCode;
 	      }else {
 	    	  
 	    	  
-			  nextPage = "LoginUIServlet";
+			  nextPage = "LoginServlet";
 			  session.setAttribute("mesgcart", "로그인이 필요한 작업입니다.");
 		  }
 	     

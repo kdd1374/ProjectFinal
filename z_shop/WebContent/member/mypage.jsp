@@ -137,7 +137,7 @@ alert("<%=mesg%>");
  <tr>
  <td width="378.5px">
  </td>
- <td width="292px">
+ <td width="290px">
  </td>
   <td align="right" valign="top" bgcolor="#fffb8b">
 	<a href="#" id ="update"><img src="images/updateMember.gif"></a><a href="MemberDelFormServlet" id ="memberDel"><img src="images/signout2.gif"></a>

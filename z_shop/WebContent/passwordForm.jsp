@@ -36,7 +36,7 @@ alert("<%=mesg%>")
 </div>
 <div id="wrap">
 <div id="wrapbox">
-<jsp:include page="member/passwordSearch.jsp" flush="true"/>
+<jsp:include page="member/passwordForm.jsp" flush="true"/>
 </div>
 </div>
 </div>

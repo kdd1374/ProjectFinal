@@ -16,12 +16,17 @@ public class DoneDTO {
 	private String phone;
 	private String email1;
 	private String email2;
+	private String payMethod;
+	private String orderday;
 	public DoneDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+
 	public DoneDTO(String gCode, String gCategory, String gName, int gPrice, String gImage, int gAmount, String userid,
-			String username, String post, String addr1, String addr2,  String phone, String email1, String email2) {
+			String username, String post, String addr1, String addr2, String phone, String email1, String email2,
+			String payMethod, String orderday) {
 		super();
 		this.gCode = gCode;
 		this.gCategory = gCategory;
@@ -37,17 +42,18 @@ public class DoneDTO {
 		this.phone = phone;
 		this.email1 = email1;
 		this.email2 = email2;
+		this.payMethod = payMethod;
+		this.orderday = orderday;
 	}
-	
+
 
 	@Override
 	public String toString() {
-		return "CartDTO [gCode=" + gCode + ", gCategory=" + gCategory + ", gName=" + gName
-				+ ", gPrice=" + gPrice + ", gImage=" + gImage + ", gAmount=" + gAmount + ", userid=" + userid
-				+ ", username=" + username + ", post=" + post + ", addr1=" + addr1 + ", addr2=" + addr2 + ", "
-						+ "phone=" + phone + ", email1=" + email1 + ", email2=" + email2 + "]";
+		return "DoneDTO [gCode=" + gCode + ", gCategory=" + gCategory + ", gName=" + gName + ", gPrice=" + gPrice
+				+ ", gImage=" + gImage + ", gAmount=" + gAmount + ", userid=" + userid + ", username=" + username
+				+ ", post=" + post + ", addr1=" + addr1 + ", addr2=" + addr2 + ", phone=" + phone + ", email1=" + email1
+				+ ", email2=" + email2 + ", payMethod=" + payMethod + ", orderday=" + orderday + "]";
 	}
-
 	public String getgCode() {
 		return gCode;
 	}
@@ -131,6 +137,18 @@ public class DoneDTO {
 	}
 	public void setEmail2(String email2) {
 		this.email2 = email2;
+	}
+	public String getPayMethod() {
+		return payMethod;
+	}
+	public void setPayMethod(String payMethod) {
+		this.payMethod = payMethod;
+	}
+	public String getOderday() {
+		return orderday;
+	}
+	public void setOrderday(String orderday) {
+		this.orderday = orderday;
 	}
 	
 }

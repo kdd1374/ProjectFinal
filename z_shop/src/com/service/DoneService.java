@@ -41,18 +41,6 @@ public class DoneService {
 		return cdto;
 	}//end idCheck
 	
-	public int doneUpdate2(HashMap<String, Object> map) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		int n = 0;
-		try {
-			DoneDAO dao = new DoneDAO();
-			n = dao.doneUpdate2(session, map);
-			session.commit();
-		} finally {
-			session.close();
-		}
-		return n;
-	}// end update-retrieve
 	
 	public List<DoneDTO> retrieveUpdate(String gCode) {
 		SqlSession session = MySqlSessionFactory.getSession();
@@ -69,27 +57,12 @@ public class DoneService {
 	}//retrieve select
 	
 	
-	public int doneUpdate(HashMap<String, String> map) {
+	public int doneDel(String orderday) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		try {
 			DoneDAO dao = new DoneDAO();
-			n = dao.doneUpdate(session, map);
-			session.commit();
-		}catch(ArithmeticException e) {
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return n;
-	}// end cartUpdate
-	
-	public String doneDel(String gCode) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		String n = null;
-		try {
-			DoneDAO dao = new DoneDAO();
-			 n = dao.doneDel(session, gCode);
+			 n = dao.doneDel(session, orderday);
 			 session.commit();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -113,17 +86,6 @@ public class DoneService {
 			return list;
 		}//end list
 	 
-	public int doneAdd(DoneDTO dto) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		int n = 0;
-		try {
-			DoneDAO dao = new DoneDAO();
-			n = dao.doneAdd(session, dto);
-			session.commit();
-		} finally {
-			session.close();
-		}
-		return n;
-	}// end cartAdd
+	
 
 }// end class

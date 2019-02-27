@@ -1,6 +1,5 @@
 package com.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,64 +10,6 @@ import com.dto.FavorDTO;
 
 public class FavorService {
 	
-	public List<FavorDTO> favorAllConfirm(List<String> list) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		List<FavorDTO> n = null;
-		try {
-			FavorDAO dao = new FavorDAO();
-			 n = dao.favorAllConfirm(session, list);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		return n;
-	}
-	
-	public int favorAllDel(List<String> list) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		int n = 0;
-		try {
-			FavorDAO dao = new FavorDAO();
-			n = dao.favorAllDel(session, list);
-			session.commit();
-		} catch(Exception e){
-			e.printStackTrace();
-		}
-		finally {
-			session.close();
-		}
-		return n;
-	}// end deleteAll
-	
-	public FavorDTO favorbygCode( String gCode) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		FavorDTO cdto = null;
-		try {
-			FavorDAO dao = new FavorDAO();
-			 cdto = dao.favorbygCode(session, gCode);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		return cdto;
-	}//end idCheck
-	
-	public int favorUpdate2(HashMap<String, Object> map) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		int n = 0;
-		try {
-			FavorDAO dao = new FavorDAO();
-			n = dao.favorUpdate2(session, map);
-			session.commit();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		return n;
-	}// end update-retrieve
 	
 	public List<FavorDTO> retrieveFavor(String gCode) {
 		SqlSession session = MySqlSessionFactory.getSession();
@@ -85,24 +26,10 @@ public class FavorService {
 	}//retrieve select
 	
 	
-	public int favorUpdate(HashMap<String, String> map) {
+	
+	public int favorDel(String gCode) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
-		try {
-			FavorDAO dao = new FavorDAO();
-			n = dao.favorUpdate(session, map);
-			session.commit();
-		}catch(ArithmeticException e) {
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return n;
-	}// end cartUpdate
-	
-	public String favorDel(String gCode) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		String n = null;
 		try {
 			FavorDAO dao = new FavorDAO();
 			 n = dao.favorDel(session, gCode);

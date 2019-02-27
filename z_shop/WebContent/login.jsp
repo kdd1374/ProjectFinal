@@ -1,16 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-String mesg=(String)request.getAttribute("mesg");
-%>
 <!DOCTYPE html>
 <html>
 <head>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+<%
+String mesg=(String)request.getAttribute("loginmesg");
+String passmesg = (String)request.getAttribute("passmesg");
+%>
 <%if(mesg!=null){%>
-alert("<%=mesg%>")
+alert("<%=mesg%>");
+<%}else if(passmesg != null){ %>
+alert("<%=passmesg%>");
 <%}%>
+
 </script>
 <link rel="stylesheet" type="text/css" href="common/main.css" />
 <meta charset="UTF-8">
