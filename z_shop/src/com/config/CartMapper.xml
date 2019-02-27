@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CartMapper">
+   
+   <select id="cartbygCode" parameterType="string" resultType="CartDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from cart
+	  where gCode = #{gCode}
+	</select>
+   
+   <select id="retrieveUpdate" parameterType="string" resultType="CartDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from cart
+	  where gCode = #{gCode}
+	</select>
+   
+   <update id="cartUpdate" parameterType="hashmap">
+  update cart
+  set gAmount = #{gAmount}
+ where gCode = #{gCode}
+</update>
+   
+   <delete id="cartDel" parameterType="String">
+    delete
+    from cart
+    where gCode = #{gCode}
+   </delete>
+   
+   <insert id="cartAdd" parameterType="CartDTO" >
+    insert into cart ( gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2)
+    values (#{gCode},#{gCategory},#{gName},#{gPrice},#{gImage},#{gAmount},#{userid},
+           #{username},#{post},#{addr1},#{addr2},#{phone},#{email1},#{email2})
+   </insert>
+	
+	<select id="cartList" parameterType="string" resultType="CartDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from cart
+	  where userid = #{userid}
+	</select>
+
+	
+</mapper>

@@ -1,0 +1,51 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="GoodsMapper">
+
+	
+	
+	<select id="goodsList" parameterType="string" resultType="GoodsDTO">
+	select gCode, gCategory, gName, gPrice, gImage, gCountry, gCompany, gDate
+	from goods
+	where gCategory=#{gCategory}
+	</select>
+
+	<select id="goodsTotal" parameterType="string" resultType="int">
+	select count(*) count
+	from goods
+	where gCategory=#{gCategory}
+	</select>
+	
+	<select id="goodsAll" resultType="GoodsDTO">
+	select gCode, gCategory, gName, gPrice, gImage, gCountry, gCompany, gDate
+	from goods
+	</select>
+	
+	<select id="codeSerch" parameterType="string" resultType="GoodsDTO">
+	select gCode, gCategory, gName, gPrice, gImage, gCountry, gCompany, gDate, gAmount
+	from goods
+	where gCode=#{gCode}
+	</select>
+	
+	<update id="adminUpdateForm" parameterType="GoodsDTO">
+	update goods
+	set gCode = #{gCode},
+	gCategory = #{gCategory},
+	gName = #{gName},
+	gPrice = #{gPrice},
+	gImage = #{gImage},
+	gCountry = #{gCountry},
+	gCompany = #{gCompany},
+	gDate = #{gDate},
+	gAmount = #{gAmount}
+	where gCode=#{gCode}
+	</update>
+	
+	<insert id="adminInsert" parameterType="GoodsDTO">
+	insert into goods(gCode, gCategory, gName, gPrice, gImage, gCountry, gCompany, gDate, gAmount)
+	values (#{gCode},#{gCategory},#{gName},#{gPrice},#{gImage},#{gCountry},#{gCompany},#{gDate},null)
+	</insert>
+	
+</mapper>
