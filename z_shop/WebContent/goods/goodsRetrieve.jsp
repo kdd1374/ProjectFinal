@@ -156,6 +156,7 @@
 	<br> <button id="buy">구매</button>
 	&nbsp;&nbsp;
 	<button id="cart">장바구니</button><br><br>
-	<img src="images/goodsbar.gif">
+	<img src="images/goodsbar.gif"><br>
+	<img src="images/goodsbar.gif"><br>
 </form>
     
