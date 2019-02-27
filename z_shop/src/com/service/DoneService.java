@@ -6,9 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
-import com.dao.CartDAO;
 import com.dao.DoneDAO;
-import com.dto.CartDTO;
 import com.dto.DoneDTO;
 
 public class DoneService {
