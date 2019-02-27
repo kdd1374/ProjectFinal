@@ -22,7 +22,7 @@
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
 <Resources>
 		<PreResources className="org.apache.catalina.webresources.DirResourceSet" 
-		base="c:/javascript_study/eclipse/workspace/z_shop/WebContent/images" webAppMount="/images" />
+		base="c:/upload" webAppMount="/xxx" />
 	</Resources>
 
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.dto.MemberDTO;
 import com.service.MemberService;
 
-@WebServlet("/IdSearchServlet")
+@WebServlet("/FindIdServlet")
 public class FindIdServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
