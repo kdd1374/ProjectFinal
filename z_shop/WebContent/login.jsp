@@ -7,10 +7,14 @@
 <script type="text/javascript">
 <%
 String mesg=(String)request.getAttribute("loginmesg");
+String passmesg = (String)request.getAttribute("passmesg");
 %>
 <%if(mesg!=null){%>
 alert("<%=mesg%>");
+<%}else if(passmesg != null){ %>
+alert("<%=passmesg%>");
 <%}%>
+
 </script>
 <link rel="stylesheet" type="text/css" href="common/main.css" />
 <meta charset="UTF-8">

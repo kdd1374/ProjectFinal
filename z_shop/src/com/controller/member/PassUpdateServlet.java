@@ -2,7 +2,6 @@ package com.controller.member;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,38 +14,27 @@ import javax.servlet.http.HttpSession;
 import com.dto.MemberDTO;
 import com.service.MemberService;
 
-
-@WebServlet("/LoginFormServlet")
-public class LoginFormServlet extends HttpServlet {
+@WebServlet("/PassUpdateServlet")
+public class PassUpdateServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userid= request.getParameter("userid");
-		String password= request.getParameter("password");
-		String mesg = null;
-		HashMap<String, Object> map = new HashMap<>();
-		MemberService ser = new MemberService();
+		String userid = request.getParameter("userid");
+		String password = request.getParameter("password");
+		HashMap<String, String> map = new HashMap<>();
 		map.put("userid", userid);
-		map.put("passwd",password);
-		MemberDTO mdto = ser.idCheck(map);
-		HttpSession session = request.getSession();
-		
-			if(mdto ==null) {
-				mesg="회원정보가 틀렸습니다.";
-				request.setAttribute("loginmesg", mesg);
-				RequestDispatcher dis = request.getRequestDispatcher("login.jsp");
-				dis.forward(request, response);
-			}else {
-				session.setAttribute("logindto", mdto);
-				response.sendRedirect("Main");
-			}
-		
-	
+		map.put("passwd", password);
+		System.out.println(map);
+		MemberService ser = new MemberService();
+		int n = ser.passwordUpdate(map);
+		request.setAttribute("passmesg", "비밀번호가 변경되었습니다.");
 		
 		
+		RequestDispatcher dis = request.getRequestDispatcher("login.jsp");
+		dis.forward(request, response);
 		
-		}
-	
+		
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

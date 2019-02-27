@@ -154,4 +154,34 @@ public class MemberService {
 		}
 		return dto;
 	}
+	
+	public int passwordUpdate(HashMap<String, String> map) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		int n = 0;
+		try {
+			MemberDAO dao = new MemberDAO();
+			n = dao.passwordUpdate(session, map);
+			session.commit();
+		}catch(Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return n;
+	}
+	
+	public MemberDTO passSearch(HashMap<String, String> map) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		MemberDTO dto = new MemberDTO();
+		try {
+			MemberDAO dao = new MemberDAO();
+			dto = dao.passSearch(session, map);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return dto;
+	}
 }

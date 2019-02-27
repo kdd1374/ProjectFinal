@@ -61,4 +61,13 @@ public class MemberDAO {
 		return dto;
 	}
 	
+	public int passwordUpdate(SqlSession session, HashMap<String, String> map) {
+		int n = session.update("MemberMapper.passwordUpdate", map);
+		return n;
+	}
+	
+	public MemberDTO passSearch(SqlSession session, HashMap<String, String> map) {
+		MemberDTO dto = session.selectOne("MemberMapper.passSearch", map);
+		return dto;
+	}
 }
