@@ -57,14 +57,17 @@ public class DoneService {
 	}//retrieve select
 	
 	
-	public int doneDel(String orderday) {
+	public int doneDel(String gCode) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		try {
 			DoneDAO dao = new DoneDAO();
-			 n = dao.doneDel(session, orderday);
+			 n = dao.doneDel(session, gCode);
 			 session.commit();
+		}catch(NumberFormatException e) {
+			
 		}catch(Exception e) {
+		
 			e.printStackTrace();
 		}finally {
 			session.close();

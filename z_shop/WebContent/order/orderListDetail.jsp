@@ -72,8 +72,7 @@
 	<form name="myForm">
 
 
-<c:forEach var="x" items="${doneList}" varStatus="status">
-
+<c:forEach var="x"  items="${doneList}" varStatus="status">
 
 	<tr>
 		<td class="td_default" width="80">
@@ -86,8 +85,7 @@
 			src="images/${x.gCategory}/${x.gImage}.jpg" border="0" align="center"
 			width="80" /></a></td>
 		<td class="td_default" width="300" style='padding-left: 30px'><a href="GoodsRetrieveServlet?gCode=${x.gCode}">${x.gName}
-	    </a><br>
-	    주문일 :</td>
+	    </a></td>
 		<td class="td_default" align="center" width="110">${x.gPrice}</td>
 		<td class="td_default" align="center" width="30"
 			style='padding-left: 10px'><input type="button" value="삭제"

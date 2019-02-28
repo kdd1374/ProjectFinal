@@ -7,7 +7,16 @@
 <script type="text/javascript">
 </script>
 
-<span style="font-size:15px; margin-bottom:30px;"><b><a href="GoodsListServlet?gCategory=${category}">${category}</a></b></span>
+<span style="font-size:15px; margin-bottom:30px;"><b>
+<c:choose>
+<c:when test="${empty goodsSearch}">
+<a href="GoodsListServlet?gCategory=${category}">${category}</a>
+</c:when>
+<c:otherwise>
+${goodsSearch}
+</c:otherwise>
+</c:choose>
+</b></span>
 <table width="750px" cellspacing="0" cellpadding="0" style="margin-top:30px;" align="center" >
 <tr>
 <td align="center" width="60px"><span style="font-size:12px;"><a href="GoodsListServlet?gCategory=rice">사료</a></spna></td>

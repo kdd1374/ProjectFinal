@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 String mesg=(String)request.getAttribute("mesg");
@@ -12,6 +12,7 @@ String mesg=(String)request.getAttribute("mesg");
 alert("<%=mesg%>")
 <%}%>
 </script>
+<link rel="stylesheet" type="text/css" href="common/main.css" />
 <style type="text/css">
 
 	body{
@@ -103,6 +104,23 @@ alert("<%=mesg%>")
 	margin:0px;
 	margin-top:30px;
 	}
+<<<<<<< HEAD
+	a:link {                         
+=======
+ 
+  a:link {                         
+>>>>>>> branch 'master' of https://github.com/kdd1374/ProjectFinal.git
+         color:black;text-decoration:none;    
+         } 
+    a:visited { 
+         color:black; 
+         } 
+     a:hover { 
+         color:black; 
+         } 
+   a:active { 
+         color:black; 
+         } 
 
 </style>
 <meta charset="UTF-8">

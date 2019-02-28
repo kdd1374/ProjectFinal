@@ -30,14 +30,12 @@ public class NoticeAddServlet extends HttpServlet {
 		System.out.println("title"+notice_title);
 		int notice_rdcnt = 0; // 처음 등록이니까 조회수는 0
 		//String reg_datetime = request.getParameter("reg_datetime");
-		String reg_admin = request.getParameter("reg_admin");
 		
 		// 이거 순서 맞춰라 ㅡ.ㅡㅇㅇ
 		NoticeDTO dto = new NoticeDTO();
 		dto.setNotice_title(notice_title);
 		dto.setNotice_contents(notice_contents);
 		dto.setNotice_rdcnt(notice_rdcnt);
-		dto.setReg_admin(reg_admin);
 		NoticeService service = new NoticeService();
 		
 		int n = service.noticeAdd(dto); 
@@ -45,7 +43,7 @@ public class NoticeAddServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("noticeAdd", "등록되었습니다");
-		
+		session.setAttribute("noticeDetail", dto);
 		response.sendRedirect("NoticeServlet");
 		
 	}

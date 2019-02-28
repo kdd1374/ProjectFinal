@@ -12,6 +12,7 @@ String mesg=(String)request.getAttribute("mesg");
 alert("<%=mesg%>")
 <%}%>
 </script>
+<link rel="stylesheet" type="text/css" href="common/main.css" />
 <style type="text/css">
 
 	body{
@@ -103,7 +104,32 @@ alert("<%=mesg%>")
 	margin:0px;
 	margin-top:30px;
 	}
+ 
+  a:link {                         
+         color:black;text-decoration:none;    
+         } 
+    a:visited { 
+         color:black; 
+         } 
+     a:hover { 
+         color:black; 
+         } 
+   a:active { 
+         color:black; 
+         } 
 
+a:link {                         
+         color:black;text-decoration:none;    
+         } 
+    a:visited { 
+         color:black; 
+         } 
+     a:hover { 
+         color:black; 
+         } 
+   a:active { 
+         color:black; 
+         } 
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>

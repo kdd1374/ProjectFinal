@@ -25,8 +25,8 @@ public class DoneDAO {
 	}
 	
 
-	public int doneDel(SqlSession session, String orderday) {
-		int n = session.delete("DoneMapper.doneDel",orderday);
+	public int doneDel(SqlSession session, String gCode) {
+		int n = session.delete("DoneMapper.doneDel",gCode);
 		return n;
 	}
 	
