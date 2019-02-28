@@ -48,7 +48,7 @@ BoardServlet이란 주소로 request로 보냄
 <input type="hidden" name="command" value=""> <!-- command키로 board_write값을 보냄 -->
 <table border="0" align="center" >
 <tr>
-<th>작성자</th>
+<th bgcolor="#fffb8b">작성자</th>
 <td>
 <input type="text" name="reg_admin" align="center">
 </td>
@@ -67,13 +67,13 @@ BoardServlet이란 주소로 request로 보냄
 </td>
 </tr> -->
 <tr>
-<th>제목</th>
+<th bgcolor="#fffb8b">제목</th>
 <td>
 <input type="text" name="notice_title" id="title" align="center" placeholder="필수 입력사항">
 </td>
 </tr>
 <tr>
-<th>내용</th>
+<th bgcolor="#fffb8b">내용</th>
 <td><textarea cols="70" rows="15" name="notice_contents"></textarea></td> 
 <!-- textarea의 70x15 크기 -->
 </tr>
