@@ -42,4 +42,9 @@ public class GoodsDAO {
 		return n;
 	}
 	
+	public List<GoodsDTO> goodsSearch(SqlSession session, HashMap<String, String> map){
+		List<GoodsDTO> list = session.selectList("GoodsMapper.goodsSearch", map);
+		return list;
+	}
+	
 }

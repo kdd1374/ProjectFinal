@@ -6,10 +6,17 @@
 
 	
 	
-	<select id="goodsList" parameterType="string" resultType="GoodsDTO">
+	<select id="goodsList" parameterType="map" resultType="GoodsDTO">
 	select gCode, gCategory, gName, gPrice, gImage, gCountry, gCompany, gDate
 	from goods
 	where gCategory=#{gCategory}
+	</select>
+	
+	
+	<select id="goodsSearch" parameterType="string" resultType="GoodsDTO">
+	select gCode, gCategory, gName, gPrice, gImage, gCountry, gCompany, gDate
+	from goods
+	where gName like '%'||#{gName}||'%'
 	</select>
 	
 	<select id="goodsTotal" parameterType="string" resultType="int">

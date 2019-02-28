@@ -98,4 +98,18 @@ public class GoodsService {
 		}
 		return n;
 	}
+	
+	public List<GoodsDTO> goodsSearch(HashMap<String, String> map){
+		SqlSession session = MySqlSessionFactory.getSession();
+		List<GoodsDTO> list = null;
+		try {
+			GoodsDAO dao = new GoodsDAO();
+			list = dao.goodsSearch(session, map);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return list;
+	}
 }
