@@ -38,22 +38,12 @@ function moveReg(){
     </colgroup>
     <thead>
         <tr>
-<<<<<<< HEAD
-          
-            <th scope="col" width="10%">글번호</th>
-            <th scope="col" width="10%">제목</th>
-            <th scope="col" width="10%">내용</th>
-            <th scope="col" width="10%">조회수</th>
-            <th scope="col" width="10%">작성일</th>
-            <th scope="col" width="10%">작성자</th>
-=======
             <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">글번호</th>
             <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">제목</th>
             <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">내용</th>
             <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">조회수</th>
             <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">작성일</th>
             <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">작성자</th>
->>>>>>> branch 'master' of https://github.com/kdd1374/ProjectFinal.git
             
         </tr>
     </thead>
@@ -62,22 +52,12 @@ function moveReg(){
             <c:when test="${fn:length(noticelist) > 0}">
                 <c:forEach var="list" items="${noticelist}" varStatus="status">
                     <tr> 
-<<<<<<< HEAD
-                        
-                        <td>${list.notice_seq}</td>
-                        <td><a href="javascript:;" onclick="javascript:moveDetail('${list.notice_seq}');">${list.notice_title}</a></td>
-                        <td>${list.notice_contents}</td>
-                        <td>${list.notice_rdcnt}</td>
-                        <td>${list.reg_datetime}</td>
-                        <td>${list.reg_admin}</td>
-=======
                         <td style="font-size:12px;">${list.notice_seq}</td>
                         <td style="font-size:12px;"><a href="javascript:;" onclick="javascript:moveDetail('${list.notice_seq}');">${list.notice_title}</a></td>
                         <td style="font-size:12px;">${list.notice_contents}</td>
                         <td style="font-size:12px;">${list.notice_rdcnt}</td>
                         <td style="font-size:12px;">${list.reg_datetime}</td>
                         <td style="font-size:12px;">${list.reg_admin}</td>
->>>>>>> branch 'master' of https://github.com/kdd1374/ProjectFinal.git
                     </tr>
                 </c:forEach>
             </c:when>

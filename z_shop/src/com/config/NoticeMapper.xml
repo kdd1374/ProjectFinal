@@ -18,11 +18,11 @@
 	
 	<update id="noticeUpd" parameterType="NoticeDTO">
 	update notice_table
-	set
-	reg_admin = #{reg_admin},
-	notice_title = #{notice_title}
-	reg_datetime = sysdate,
-	notice_contents = #{notice_contents}
+		set
+			reg_admin = #{reg_admin},
+			notice_title = #{notice_title},
+			reg_datetime = sysdate,
+			notice_contents = #{notice_contents}
 	where notice_seq= #{notice_seq}
 	</update>
 	

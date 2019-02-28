@@ -28,20 +28,17 @@ public class NoticeUpdSaveServlet extends HttpServlet {
 		String nextPage=null;
 		if(dto!=null) {
 			NoticeDTO noticedto = new NoticeDTO();
-			String notice_seq = request.getParameter("notice_seq");
-			String reg_admin = request.getParameter("reg_admin");
-			String notice_title = request.getParameter("notice_title");
-			String notice_contents = request.getParameter("notice_contents");
-			String reg_datetime = request.getParameter("reg_datetime");
+			noticedto.setNotice_seq(Integer.parseInt(request.getParameter("notice_seq")));
+			noticedto.setReg_admin(request.getParameter("reg_admin"));
+			noticedto.setNotice_title(request.getParameter("notice_title"));
+			noticedto.setNotice_contents(request.getParameter("notice_contents"));
+			//String reg_datetime = request.getParameter("reg_datetime"); // 아니 이건 sysdate하면 되서 따로 선언안해도됨 ㅋ
 			
-			System.out.println(notice_seq + reg_admin + notice_title + notice_contents + reg_datetime);
-			
-			
+			int notice_seq = noticedto.getNotice_seq();
 			
 			NoticeService service = new NoticeService();
-			
-			System.out.println(noticedto);
-			int n = service.noticeUpd(noticedto);
+			service.noticeUpd(noticedto);
+			request.setAttribute("notice_seq", noticedto.getNotice_seq()); // 이건 뭐여 근데 notice_seq는 int 아님? ㅇㅇ 
 			
 			
 			nextPage = "noticeDetailMove.jsp?notice_seq=" + notice_seq;

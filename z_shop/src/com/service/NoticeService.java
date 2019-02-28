@@ -69,12 +69,12 @@ public class NoticeService {
 		return noticeDetail; //여기도 마찬가지
 	}// end noticeService
 	
-	public int noticeUpd(NoticeDTO noticedto) {
+	public void noticeUpd(NoticeDTO noticedto) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		try {
 			NoticeDAO dao = new NoticeDAO();
-			n = dao.noticeUpd(session, noticedto);
+			dao.noticeUpd(session, noticedto);
 			session.commit();
 		}catch(Exception e) {
 			session.rollback();
@@ -82,7 +82,6 @@ public class NoticeService {
 		}finally{
 			session.close();
 		}
-		return n;
 	}
 	
 	public List<NoticeDTO> selectAll(int curPage, int purpage) {

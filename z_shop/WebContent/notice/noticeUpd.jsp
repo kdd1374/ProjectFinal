@@ -33,7 +33,7 @@ function moveList(){
 
 function updSave(){
 	var frm2 = document.notice;
-	frm2.action = '/z_shop/NoticeServlet';
+	frm2.action = '/z_shop/NoticeUpdFormServlet';
 	frm2.submit();
 }
 </script>
@@ -71,7 +71,7 @@ function updSave(){
                     	내 용
                 </td>
                 <td>
-                 <textarea type="text" rows="40" cols="100" name="notice_contents" id="notice_contents" value="${noticeDetail.notice_contents}"></textarea>
+                 <textarea rows="40" cols="100" name="notice_contents" id="notice_contents">${noticeDetail.notice_contents}</textarea>
                 </td>        
             </tr>
             <tr>
