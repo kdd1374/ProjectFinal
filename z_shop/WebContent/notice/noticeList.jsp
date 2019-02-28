@@ -27,8 +27,9 @@ function moveReg(){
 <form id="frm" name="frm" method="POST">
 	<input type="hidden" id="notice_seq" name="notice_seq" value=""/>
 </form>
-<h2>게시판 목록</h2>
-<table style="border:1px solid #fffb8b" width="1000px" align="center">
+<span style="font-size:14px"><b>공지사항</b></span><br>
+<span style="font-size:10px; color:red;">각종이벤트 및 공지사항을 확인해주세요</span><br>
+<table style="border:1px solid #fffb8b; margin-top:30px;" align="center" cellspacing="0" cellpadding="0" width="750px">
     <colgroup>
         <col width="10%"/>
         <col width="*"/>
@@ -37,13 +38,12 @@ function moveReg(){
     </colgroup>
     <thead>
         <tr>
-            <th scope="col" width="10%" bgcolor="#fffb8b">글넘버</th>
-            <th scope="col" width="10%" bgcolor="#fffb8b">글번호</th>
-            <th scope="col" width="10%" bgcolor="#fffb8b">제목</th>
-            <th scope="col" width="10%" bgcolor="#fffb8b">내용</th>
-            <th scope="col" width="10%" bgcolor="#fffb8b">조회수</th>
-            <th scope="col" width="10%" bgcolor="#fffb8b">작성일</th>
-            <th scope="col" width="10%" bgcolor="#fffb8b">작성자</th>
+            <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">글번호</th>
+            <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">제목</th>
+            <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">내용</th>
+            <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">조회수</th>
+            <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">작성일</th>
+            <th scope="col" height="25px" width="10%" bgcolor="#fffb8b" style="font-size:12px;">작성자</th>
             
         </tr>
     </thead>
@@ -52,13 +52,12 @@ function moveReg(){
             <c:when test="${fn:length(noticelist) > 0}">
                 <c:forEach var="list" items="${noticelist}" varStatus="status">
                     <tr> 
-                        <td>${list.notice_num}</td>
-                        <td>${list.notice_seq}</td>
-                        <td><a href="javascript:;" onclick="javascript:moveDetail('${list.notice_seq}');">${list.notice_title}</a></td>
-                        <td>${list.notice_contents}</td>
-                        <td>${list.notice_rdcnt}</td>
-                        <td>${list.reg_datetime}</td>
-                        <td>${list.reg_admin}</td>
+                        <td style="font-size:12px;">${list.notice_seq}</td>
+                        <td style="font-size:12px;"><a href="javascript:;" onclick="javascript:moveDetail('${list.notice_seq}');">${list.notice_title}</a></td>
+                        <td style="font-size:12px;">${list.notice_contents}</td>
+                        <td style="font-size:12px;">${list.notice_rdcnt}</td>
+                        <td style="font-size:12px;">${list.reg_datetime}</td>
+                        <td style="font-size:12px;">${list.reg_admin}</td>
                     </tr>
                 </c:forEach>
             </c:when>
@@ -83,8 +82,9 @@ function moveReg(){
         </td>
         </tr>
     </tbody>
-    <input type="button" onclick="javascript:moveReg();" value="글쓰기" />
-    <br>
+    
+</table>
+<input type="button" onclick="javascript:moveReg();" value="글쓰기" />
     <form>
      <div id="searchForm">
         <form>
@@ -99,7 +99,6 @@ function moveReg(){
         </form>    
     </div>
     </form>
-</table>
 
 
 <!-- <a href='DeptServlet?curPage="+i+"'>" + i + "</a>&nbsp;&nbsp;  -->

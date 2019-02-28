@@ -31,9 +31,9 @@
 	
 	<insert id="noticeAdd" parameterType="NoticeDTO" >
 		INSERT INTO NOTICE_TABLE
-			(notice_seq, notice_title, notice_contents, notice_rdcnt, reg_datetime, reg_admin)
+			(notice_seq, notice_title, notice_contents, notice_rdcnt, reg_datetime)
 		VALUES
-			(AUTO_NOTICE_SEQ.NEXTVAL, #{notice_title}, #{notice_contents}, #{notice_rdcnt}, sysdate, #{reg_admin})
+			(AUTO_NOTICE_SEQ.NEXTVAL, #{notice_title}, #{notice_contents}, #{notice_rdcnt}, sysdate)
 	</insert>
 	
 	<delete id="noticeDel" parameterType="int">
