@@ -76,7 +76,7 @@
 		userid like '%'||#{userid}||'%'
 		</if>
 		<if test="username !=null">
-		where username like '%'||#{username}||'%'
+		username like '%'||#{username}||'%'
 		</if>
 		</where> 
 	</select>
