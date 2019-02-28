@@ -44,7 +44,7 @@ public class NoticeUpdSaveServlet extends HttpServlet {
 			
 			nextPage = "noticeDetailMove.jsp?notice_seq=" + notice_seq;
 		}else {
-			nextPage = "LoginUIServlet";
+			nextPage = "LoginServlet";
 			request.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		}
 		  RequestDispatcher dis =

@@ -45,7 +45,7 @@ public class NoticeAddServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("noticeAdd", "등록되었습니다");
-		
+		session.setAttribute("noticeDetail", dto);
 		response.sendRedirect("NoticeServlet");
 		
 	}

@@ -27,10 +27,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  where gCode = #{gCode}
 	</select>
    
-   <delete id="doneDel" parameterType="string">
+   <delete id="doneDel" parameterType="String">
     delete
     from done
-    where orderday = #{orderday}
+    where gCode = #{gCode}
    </delete>
    
 	

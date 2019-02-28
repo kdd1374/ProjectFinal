@@ -28,7 +28,7 @@ function moveReg(){
 	<input type="hidden" id="notice_seq" name="notice_seq" value=""/>
 </form>
 <h2>게시판 목록</h2>
-<table style="border:1px solid #ccc" width="1363px">
+<table style="border:1px solid #fffb8b" width="1000px" align="center">
     <colgroup>
         <col width="10%"/>
         <col width="*"/>
@@ -37,13 +37,13 @@ function moveReg(){
     </colgroup>
     <thead>
         <tr>
-            <th scope="col" width="10%">글넘버</th>
-            <th scope="col" width="10%">글번호</th>
-            <th scope="col" width="10%">제목</th>
-            <th scope="col" width="10%">내용</th>
-            <th scope="col" width="10%">조회수</th>
-            <th scope="col" width="10%">작성일</th>
-            <th scope="col" width="10%">작성자</th>
+            <th scope="col" width="10%" bgcolor="#fffb8b">글넘버</th>
+            <th scope="col" width="10%" bgcolor="#fffb8b">글번호</th>
+            <th scope="col" width="10%" bgcolor="#fffb8b">제목</th>
+            <th scope="col" width="10%" bgcolor="#fffb8b">내용</th>
+            <th scope="col" width="10%" bgcolor="#fffb8b">조회수</th>
+            <th scope="col" width="10%" bgcolor="#fffb8b">작성일</th>
+            <th scope="col" width="10%" bgcolor="#fffb8b">작성자</th>
             
         </tr>
     </thead>
