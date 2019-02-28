@@ -22,8 +22,6 @@ public class DoneDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-
 	public DoneDTO(String gCode, String gCategory, String gName, int gPrice, String gImage, int gAmount, String userid,
 			String username, String post, String addr1, String addr2, String phone, String email1, String email2,
 			String payMethod, String orderday) {
@@ -45,8 +43,6 @@ public class DoneDTO {
 		this.payMethod = payMethod;
 		this.orderday = orderday;
 	}
-
-
 	@Override
 	public String toString() {
 		return "DoneDTO [gCode=" + gCode + ", gCategory=" + gCategory + ", gName=" + gName + ", gPrice=" + gPrice
@@ -144,7 +140,7 @@ public class DoneDTO {
 	public void setPayMethod(String payMethod) {
 		this.payMethod = payMethod;
 	}
-	public String getOderday() {
+	public String getOrderday() {
 		return orderday;
 	}
 	public void setOrderday(String orderday) {

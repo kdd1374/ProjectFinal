@@ -35,7 +35,6 @@ $(document).ready(function(){
 
 </head>
 <body>
-<div id="wrap">
 <h1>게시글 등록</h1>
 <form name="frm" method="get" action="NoticeAddServlet">
 <!-- form 이름 frm은 자바스크립트로 form을 선택할때 사용
@@ -47,11 +46,11 @@ BoardServlet이란 주소로 request로 보냄
 
 -->
 <input type="hidden" name="command" value=""> <!-- command키로 board_write값을 보냄 -->
-<table>
+<table border="0" align="center" >
 <tr>
 <th>작성자</th>
 <td>
-<input type="text" name="reg_admin">
+<input type="text" name="reg_admin" align="center">
 </td>
 </tr>
 <!-- <tr>
@@ -70,8 +69,7 @@ BoardServlet이란 주소로 request로 보냄
 <tr>
 <th>제목</th>
 <td>
-<input type="text" name="notice_title" id="title">
-<span>* 필수 </span>
+<input type="text" name="notice_title" id="title" align="center" placeholder="필수 입력사항">
 </td>
 </tr>
 <tr>

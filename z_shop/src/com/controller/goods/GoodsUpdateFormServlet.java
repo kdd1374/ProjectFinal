@@ -33,7 +33,7 @@ public class GoodsUpdateFormServlet extends HttpServlet {
 		dis.forward(request, response);
 		}else {
 		list = ser.codeSerch(gCode);
-		request.setAttribute("updateForm", list);
+		session.setAttribute("updateForm", list);
 		RequestDispatcher dis = request.getRequestDispatcher("goodsUpdateForm.jsp");
 		dis.forward(request, response);
 		}

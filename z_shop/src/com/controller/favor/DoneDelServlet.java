@@ -23,10 +23,9 @@ public class DoneDelServlet extends HttpServlet {
 	      MemberDTO dto = (MemberDTO)session.getAttribute("logindto");
 		 String nextPage = null;
 	      if(dto!=null) {
-	       String orderday = request.getParameter("orderday");
-	       
+	       String gCode = request.getParameter("gCode");
 	       DoneService service = new DoneService();
-	       int n = service.doneDel(orderday);
+	       int n = service.doneDel(gCode);
 	       
 			nextPage = "OrderListDetailServlet";
 

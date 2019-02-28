@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FavorMapper">
+   
+   
+   <select id="retrieveFavor" parameterType="string" resultType="FavorDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from favor
+	  where gCode = #{gCode}
+	</select>
+   
+   
+   <delete id="favorDel" parameterType="string">
+    delete
+    from favor
+    where gCode = #{gCode}
+   </delete>
+   
+   <insert id="favorAdd" parameterType="FavorDTO" >
+    insert into favor ( gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2)
+    values (#{gCode},#{gCategory},#{gName},#{gPrice},#{gImage},#{gAmount},#{userid},
+           #{username},#{post},#{addr1},#{addr2},#{phone},#{email1},#{email2})
+   </insert>
+	
+	<select id="favorList" parameterType="string" resultType="FavorDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from favor
+	  where userid = #{userid}
+	</select>
+
+	
+</mapper>

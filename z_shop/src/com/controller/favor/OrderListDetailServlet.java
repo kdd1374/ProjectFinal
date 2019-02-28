@@ -27,6 +27,7 @@ public class OrderListDetailServlet extends HttpServlet {
 	    	  DoneService service = new DoneService();
 	    	  List<DoneDTO> list = service.doneList(userid);
 	    	  
+	    	  
 	    	  request.setAttribute("doneList", list);
 				nextPage = "orderListDetail.jsp";
 	    	  

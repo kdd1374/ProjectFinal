@@ -10,7 +10,6 @@ $(document).ready(function(){
 		
 });
 </script>
-
 <table width="750px" cellspacing="0" cellpadding="0" align="center">
 
 	<tr>
