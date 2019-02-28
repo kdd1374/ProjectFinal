@@ -16,7 +16,7 @@
 	
 	
 	
-	<update id="NoticeUpd" parameterType="NoticeDTO">
+	<update id="noticeUpd" parameterType="NoticeDTO">
 	update notice_table
 	set
 	reg_admin = #{reg_admin},

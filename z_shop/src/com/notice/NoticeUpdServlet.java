@@ -25,7 +25,7 @@ public class NoticeUpdServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		MemberDTO dto = (MemberDTO)session.getAttribute("login");
+		MemberDTO dto = (MemberDTO)session.getAttribute("logindto");
 		String nextPage=null;
 		if(dto!=null) {
 			if(request.getParameter("notice_seq") == null) {
@@ -33,15 +33,15 @@ public class NoticeUpdServlet extends HttpServlet {
 			}else{
 				NoticeService service = new NoticeService();
 				NoticeDTO noticeDto = new NoticeDTO();
-				noticeDto.setNotice_seq(Integer.valueOf(request.getParameter("notice_seq"))); // 요거 예외처리해라 여기서예외처리함?
+				noticeDto.setNotice_seq(Integer.valueOf(request.getParameter("notice_seq"))); // 요거 예외처리
 				NoticeDTO noticeDetail = service.noticeDetail(noticeDto); 		
 				
 				request.setAttribute("noticeDetail", noticeDetail); 
 			}
 			
-			nextPage = "noticeDetailMove.jsp";	// 여기에 수정 페이지 하나 만들어야함
+			nextPage = "noticeUpdMove.jsp";	// 여기에 수정 페이지 하나 만들어야함
 		}else {
-			nextPage = "LoginUIServlet";
+			nextPage = "LoginServlet";
 			request.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		}
 		  RequestDispatcher dis =

@@ -37,7 +37,7 @@ function moveReg(){
     </colgroup>
     <thead>
         <tr>
-            <th scope="col" width="10%">글넘버</th>
+          
             <th scope="col" width="10%">글번호</th>
             <th scope="col" width="10%">제목</th>
             <th scope="col" width="10%">내용</th>
@@ -52,7 +52,7 @@ function moveReg(){
             <c:when test="${fn:length(noticelist) > 0}">
                 <c:forEach var="list" items="${noticelist}" varStatus="status">
                     <tr> 
-                        <td>${list.notice_num}</td>
+                        
                         <td>${list.notice_seq}</td>
                         <td><a href="javascript:;" onclick="javascript:moveDetail('${list.notice_seq}');">${list.notice_title}</a></td>
                         <td>${list.notice_contents}</td>

@@ -33,7 +33,7 @@ function moveList(){
 
 function updSave(){
 	var frm2 = document.notice;
-	frm2.action = '/z_shop/NoticeUpdSaveServlet';
+	frm2.action = '/z_shop/NoticeServlet';
 	frm2.submit();
 }
 </script>
@@ -47,7 +47,7 @@ function updSave(){
         <table id="detailBoard" width="800" border="3" bordercolor="lightgray">
         <tr>
                 <td id="title">조회수</td>
-                <td><${noticeDetail.notice_rdcnt}</td>
+                <td>${noticeDetail.notice_rdcnt}</td>
             </tr>
             <tr>
                 <td id="title">작성일</td>
@@ -71,7 +71,7 @@ function updSave(){
                     	내 용
                 </td>
                 <td>
-                    <input type="text" name="notice_contents" id="notice_contents" value="${noticeDetail.notice_contents}"/>
+                 <textarea type="text" rows="40" cols="100" name="notice_contents" id="notice_contents" value="${noticeDetail.notice_contents}"></textarea>
                 </td>        
             </tr>
             <tr>

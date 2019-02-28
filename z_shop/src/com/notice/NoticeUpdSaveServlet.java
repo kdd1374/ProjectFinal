@@ -24,11 +24,11 @@ public class NoticeUpdSaveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		MemberDTO dto = (MemberDTO)session.getAttribute("login");
+		MemberDTO dto = (MemberDTO)session.getAttribute("logindto");
 		String nextPage=null;
 		if(dto!=null) {
-			
-			int notice_seq = Integer.parseInt(request.getParameter("notice_seq"));
+			NoticeDTO noticedto = new NoticeDTO();
+			String notice_seq = request.getParameter("notice_seq");
 			String reg_admin = request.getParameter("reg_admin");
 			String notice_title = request.getParameter("notice_title");
 			String notice_contents = request.getParameter("notice_contents");
@@ -39,12 +39,14 @@ public class NoticeUpdSaveServlet extends HttpServlet {
 			
 			
 			NoticeService service = new NoticeService();
-			int n = service.noticeUpd(notice_seq);
+			
+			System.out.println(noticedto);
+			int n = service.noticeUpd(noticedto);
 			
 			
 			nextPage = "noticeDetailMove.jsp?notice_seq=" + notice_seq;
 		}else {
-			nextPage = "LoginUIServlet";
+			nextPage = "LoginServlet";
 			request.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		}
 		  RequestDispatcher dis =

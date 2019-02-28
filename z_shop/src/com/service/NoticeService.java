@@ -21,7 +21,7 @@ public class NoticeService {
 		}finally {
 			session.close();
 		}
-		return list; //여기도 마찬가지
+		return list; 
 	}// end noticeService
 	
 	public int noticeAdd(NoticeDTO noticeDTo) {
@@ -69,13 +69,15 @@ public class NoticeService {
 		return noticeDetail; //여기도 마찬가지
 	}// end noticeService
 	
-	public int noticeUpd(int notice_seq) {
+	public int noticeUpd(NoticeDTO noticedto) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		int n = 0;
 		try {
 			NoticeDAO dao = new NoticeDAO();
-			n = dao.noticeUpd(session, notice_seq);
+			n = dao.noticeUpd(session, noticedto);
+			session.commit();
 		}catch(Exception e) {
+			session.rollback();
 			e.printStackTrace();
 		}finally{
 			session.close();

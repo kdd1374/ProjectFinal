@@ -32,8 +32,8 @@ public class NoticeDAO {
 		
 	}
 	
-	public int noticeUpd(SqlSession session, int notice_seq) {
-		int n = session.selectOne("NoticeMapper.NoticeUpd",notice_seq);
+	public int noticeUpd(SqlSession session, NoticeDTO noticedto) {
+		int n = session.selectOne("NoticeMapper.noticeUpd",noticedto);
 		return n;
 	}
 	
