@@ -27,6 +27,7 @@ public class adminUpdateFormSerlvet extends HttpServlet {
 		if(ne!=null) {
 			session.removeAttribute("updateForm");
 		}
+		System.out.println(dto+"\t aef");
 		if(dto !=null) {
 			String gImage = request.getParameter("gImage");
 			String gCode = request.getParameter("gCode");
