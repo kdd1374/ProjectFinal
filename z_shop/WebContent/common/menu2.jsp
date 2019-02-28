@@ -16,6 +16,12 @@ $(document).ready(function(){
 		
 	});
 	
+	$("#goodsSearch").on("keyup",function(event){
+		if(event.keyCode == 13){
+			location.href="GoodsSearchServlet?goodsSearch="+$("#goodsSearch").val();
+		}
+	});
+	
 });
 </script>
 <style>

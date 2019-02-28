@@ -25,6 +25,7 @@ public class GoodsSearchServlet extends HttpServlet {
 		map.put("gName", gName);
 		List<GoodsDTO> list = ser.goodsSearch(map);
 		
+		request.setAttribute("goodsSearch", "검색 결과");
 		request.setAttribute("goodsList", list);
 		RequestDispatcher dis = request.getRequestDispatcher("goodsList.jsp");
 		dis.forward(request, response);
