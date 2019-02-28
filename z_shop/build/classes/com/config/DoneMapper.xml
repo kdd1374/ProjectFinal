@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DoneMapper">
+   
+   <delete id="doneAllDel" parameterType="arraylist">
+     delete from done
+     where gCode
+     IN
+     <foreach collection="list" item="item" open="(" separator="," close=")">
+       #{item}
+     </foreach>
+   </delete>
+   
+   <select id="donebygCode" parameterType="string" resultType="DoneDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from done
+	  where gCode = #{gCode}
+	</select>
+   
+   <select id="retrieveUpdate" parameterType="string" resultType="DoneDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from done
+	  where gCode = #{gCode}
+	</select>
+   
+   <delete id="doneDel" parameterType="string">
+    delete
+    from done
+    where orderday = #{orderday}
+   </delete>
+   
+	
+	<select id="doneList" parameterType="string" resultType="DoneDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2,payMethod, orderday
+	  from done
+	  where userid = #{userid}
+	</select>
+
+	
+</mapper>

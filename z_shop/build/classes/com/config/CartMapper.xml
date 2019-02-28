@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CartMapper">
+   
+    <insert id="orderDone" parameterType="DoneDTO" >
+   insert into done (gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2, payMethod,orderday)
+                          
+   values(#{gCode},#{gCategory},#{gName},#{gPrice},#{gImage},#{gAmount},#{userid},#{username},
+   #{post},#{addr1},#{addr2},#{phone},#{email1},#{email2},#{payMethod},to_char(sysdate ,'yyyy-mm-dd-hh:mm'))
+ </insert>
+   
+    <insert id="orderAllDone" parameterType="arraylist" >
+   insert all
+   <foreach collection="list" item="item">
+   into done (gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2,payMethod,orderday)
+                             
+   values( #{item.gCode}, #{item.gCategory},#{item.gName},#{item.gPrice},#{item.gImage},
+   #{item.gAmount},#{item.userid},#{item.username},#{item.post},#{item.addr1},#{item.addr2},
+   #{item.phone},#{item.email1},#{item.email2},#{item.payMethod},to_char(sysdate ,'yyyy-mm-dd') )                     
+   </foreach>   
+   select *
+   from dual
+ </insert>
+   
+    <select id="orderAllConfirm" parameterType="arraylist" resultType="CartDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from cart
+	  where gCode
+	  IN
+	 <foreach collection="list" item="item" open="(" separator="," close=")">
+       #{item}
+     </foreach>
+	</select>
+	
+   <delete id="cartAllDel" parameterType="arraylist">
+     delete from cart
+     where gCode
+     IN
+     <foreach collection="list" item="item" open="(" separator="," close=")">
+       #{item}
+     </foreach>
+   </delete>
+   
+   <select id="cartbygCode" parameterType="string" resultType="CartDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from cart
+	  where gCode = #{gCode}
+	</select>
+   
+   <select id="retrieveUpdate" parameterType="string" resultType="CartDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from cart
+	  where gCode = #{gCode}
+	</select>
+   
+   <update id="cartUpdate" parameterType="hashmap">
+  update cart
+  set gAmount = #{gAmount}
+ where gCode = #{gCode}
+</update>
+   
+   <delete id="cartDel" parameterType="object">
+    delete
+    from cart
+    where gCode = #{gCode}
+   </delete>
+   
+   <insert id="cartAdd" parameterType="CartDTO" >
+    insert into cart ( gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2)
+    values (#{gCode},#{gCategory},#{gName},#{gPrice},#{gImage},#{gAmount},#{userid},
+           #{username},#{post},#{addr1},#{addr2},#{phone},#{email1},#{email2})
+   </insert>
+	
+	<select id="cartList" parameterType="string" resultType="CartDTO">
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
+	         addr1, addr2, phone, email1, email2
+	  from cart
+	  where userid = #{userid}
+	</select>
+
+	
+</mapper>

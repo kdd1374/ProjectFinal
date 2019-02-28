@@ -1,0 +1,75 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NoticeMapper">
+
+	
+	<!-- NoticeMapper.noticeList 로 한것처럼 밑에거로 오는거임 그래서 쿼리 돌려서 나온 값을 resultType을 DTO 로 선언했으니 DTO에 값을 담아서 리턴 ㅇㅋ?ㅇㅋ-->
+	<select id="noticeList" parameterType="NoticeDTO" resultType="NoticeDTO">
+	<![CDATA[
+		select notice_username,notice_num,notice_seq, notice_title, notice_contents, notice_rdcnt, reg_datetime, reg_admin
+		from notice_table
+		order by notice_seq desc
+	]]>
+	</select>
+	
+	
+	
+	<update id="NoticeUpd" parameterType="NoticeDTO">
+	update notice_table
+	set
+	reg_admin = #{reg_admin},
+	notice_title = #{notice_title}
+	reg_datetime = sysdate,
+	notice_contents = #{notice_contents}
+	where notice_seq= #{notice_seq}
+	</update>
+	
+	
+	
+	
+	<insert id="noticeAdd" parameterType="NoticeDTO" >
+		INSERT INTO NOTICE_TABLE
+			(notice_seq, notice_title, notice_contents, notice_rdcnt, reg_datetime, reg_admin)
+		VALUES
+			(AUTO_NOTICE_SEQ.NEXTVAL, #{notice_title}, #{notice_contents}, #{notice_rdcnt}, sysdate, #{reg_admin})
+	</insert>
+	
+	<delete id="noticeDel" parameterType="int">
+	delete 
+	from Notice_table 
+	where notice_seq = #{notice_seq}
+	</delete>
+	
+	
+	
+	
+	<select id="noticeDetail" parameterType="NoticeDTO" resultType="NoticeDTO">
+	<![CDATA[
+		select notice_username,notice_num,notice_seq, notice_title, notice_contents, notice_rdcnt, reg_datetime, reg_admin
+		from notice_table
+    	where notice_seq = #{notice_seq}
+		order by notice_seq desc
+	]]>
+	</select>
+	
+	
+	<select id="totalRecord" parameterType="string" resultType="int">
+	select count(*) count
+	from Notice_table
+	
+	</select>
+	
+	
+	<select id="selectAll" resultType="NoticeDTO">
+	select notice_username,notice_num,notice_seq, notice_title, notice_contents, notice_rdcnt, reg_datetime, reg_admin
+		from notice_table
+		order by notice_seq desc
+	
+	</select>
+	
+	
+	
+	
+</mapper>
