@@ -27,10 +27,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  where gCode = #{gCode}
 	</select>
    
+<<<<<<< HEAD
    <delete id="doneDel" parameterType="String">
     delete
     from done
     where gCode = #{gCode}
+=======
+   <delete id="doneDel" parameterType="string">
+    delete
+    from done
+    where orderday = #{orderday}
+>>>>>>> branch 'master' of https://github.com/kdd1374/ProjectFinal.git
    </delete>
    
 	

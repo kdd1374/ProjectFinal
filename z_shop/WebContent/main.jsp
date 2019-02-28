@@ -98,6 +98,7 @@ session.removeAttribute("delmesg");
 	#member{
 	width:100%;
 	float:left;
+	height:105px;
 	margin:0px;
 	margin-top:20px;
 	}

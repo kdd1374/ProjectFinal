@@ -27,10 +27,10 @@ public class LoginFormServlet extends HttpServlet {
 		HashMap<String, Object> map = new HashMap<>();
 		MemberService ser = new MemberService();
 		map.put("userid", userid);
-		map.put("passwd",password);
+		map.put("password",password);
 		MemberDTO mdto = ser.idCheck(map);
 		HttpSession session = request.getSession();
-		
+		System.out.println(mdto);
 			if(mdto ==null) {
 				mesg="회원정보가 틀렸습니다.";
 				request.setAttribute("loginmesg", mesg);

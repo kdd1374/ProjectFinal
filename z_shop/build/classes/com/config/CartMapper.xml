@@ -9,7 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	         addr1, addr2, phone, email1, email2, payMethod,orderday)
                           
    values(#{gCode},#{gCategory},#{gName},#{gPrice},#{gImage},#{gAmount},#{userid},#{username},
+<<<<<<< HEAD
    #{post},#{addr1},#{addr2},#{phone},#{email1},#{email2},#{payMethod},to_char(sysdate ,'yyyy-mm-dd'))
+=======
+   #{post},#{addr1},#{addr2},#{phone},#{email1},#{email2},#{payMethod},to_char(sysdate ,'yyyy-mm-dd-hh:mm'))
+>>>>>>> branch 'master' of https://github.com/kdd1374/ProjectFinal.git
  </insert>
    
     <insert id="orderAllDone" parameterType="arraylist" >

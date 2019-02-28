@@ -7,20 +7,20 @@
 	
 	
 	<select id="selectAll" resultType="MemberDTO">
-	select userid,passwd, username,post, addr1, addr2, phone,
+	select userid,password, username,post, addr1, addr2, phone,
 	email1, email2, mas, ssn, hiredate, mileage
 	from member
 	</select>
 	
 	<select id="idCheck" parameterType="map" resultType="MemberDTO">
-	select userid,passwd, username,post, addr1, addr2, phone,
+	select userid,password, username,post, addr1, addr2, phone,
 	email1, email2, mas, ssn, hiredate, mileage
 	from member
-	where userid = #{userid} and passwd = #{passwd}
+	where userid = #{userid} and password = #{password}
 	</select>
 	
 	<select id="idSerch" parameterType="String" resultType="MemberDTO">
-	select userid,passwd, username,post, addr1, addr2, phone,
+	select userid,password, username,post, addr1, addr2, phone,
 	email1, email2, mas, ssn, hiredate, mileage
 	from member
 	where userid = #{userid}
@@ -33,8 +33,8 @@
 	</select>
 	
 	<insert id="memberSignup" parameterType="MemberDTO">
-	insert into member(userid,passwd,username,ssn,post,addr1,addr2,phone,email1,email2,mas,hiredate )
-	values(#{userid},#{passwd},#{username},#{ssn},#{post},#{addr1},#{addr2},#{phone},#{email1},#{email2},null,to_char(sysdate,'yyyy-mm-dd'))
+	insert into member(userid,password,username,ssn,post,addr1,addr2,phone,email1,email2,mas,hiredate )
+	values(#{userid},#{password},#{username},#{ssn},#{post},#{addr1},#{addr2},#{phone},#{email1},#{email2},null,to_char(sysdate,'yyyy-mm-dd'))
 	</insert>
 	
 	<delete id="memberDel" parameterType="string">
@@ -55,7 +55,7 @@
 	</update>
 	
 	<select id="memberListSerch" parameterType="hashmap" resultType="MemberDTO">
-	select userid,passwd, username,post, addr1, addr2, phone,
+	select userid,password, username,post, addr1, addr2, phone,
 	email1, email2, mas, ssn, hiredate, mileage
 	from member
 	<choose>
@@ -82,7 +82,7 @@
 	</select>
 	
 	<select id="idSearch" parameterType="map" resultType="MemberDTO">
-	select userid,passwd, username,post, addr1, addr2, phone,
+	select userid,password, username,post, addr1, addr2, phone,
 	email1, email2, mas, ssn, hiredate, mileage
 	from member
 	where username = #{username} 
@@ -92,7 +92,7 @@
 	
 	
 	<select id="passSearch" parameterType="map" resultType="MemberDTO">
-	select userid,passwd, username,post, addr1, addr2, phone,
+	select userid,password, username,post, addr1, addr2, phone,
 	email1, email2, mas, ssn, hiredate, mileage
 	from member
 	where username = #{username} 
@@ -103,7 +103,7 @@
 	
 	<update id="passwordUpdate" parameterType="map">
 	update member
-	set passwd = #{passwd}
+	set password = #{password}
 	where userid = #{userid}
 	</update>
 	
