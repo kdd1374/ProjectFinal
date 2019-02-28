@@ -4,7 +4,7 @@ public class MemberDTO {
 
 
 	private String userid;
-	private String passwd;
+	private String password;
 	private String username;
 	private String ssn;
 	private String post;
@@ -62,11 +62,11 @@ public class MemberDTO {
 	public void setHiredate(String hiredate) {
 		this.hiredate = hiredate;
 	}
-	public MemberDTO(String userid, String passwd, String username, String ssn, String post, String addr1, String addr2,
+	public MemberDTO(String userid, String password, String username, String ssn, String post, String addr1, String addr2,
 			String phone, String email1, String email2, String mas) {
 		super();
 		this.userid = userid;
-		this.passwd = passwd;
+		this.password = password;
 		this.username = username;
 		this.ssn=ssn;
 		this.post = post;
@@ -84,10 +84,10 @@ public class MemberDTO {
 		this.userid = userid;
 	}
 	public String getPasswd() {
-		return passwd;
+		return password;
 	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setPasswd(String password) {
+		this.password = password;
 	}
 	public String getUsername() {
 		return username;
@@ -133,7 +133,7 @@ public class MemberDTO {
 	}
 	@Override
 	public String toString() {
-		return "MemberDTO [userid=" + userid + ", passwd=" + passwd + ", username=" + username + ", ssn=" + ssn
+		return "MemberDTO [userid=" + userid + ", password=" + password + ", username=" + username + ", ssn=" + ssn
 				+ ", post=" + post + ", addr1=" + addr1 + ", addr2=" + addr2 + ", phone=" + phone + ", email1=" + email1
 				+ ", email2=" + email2 + ", mas=" + mas + ", hiredate=" + hiredate + ", mileage=" + mileage + "]";
 	}
