@@ -52,7 +52,7 @@ public class GoodsCartServlet extends HttpServlet {
 	        List<CartDTO> list = service.retrieveUpdate(gCode);//카트리스트의 코드값
 	        
 	        
-            if(list.size()!=0 && gCode.equals(list.get(0).getgCode())) {
+            if(list!=null && list.size()!=0 && gCode.equals(list.get(0).getgCode())) {
             	int gAmount2 = list.get(0).getgAmount();
     	        
     	        HashMap<String, Object> map = new HashMap<>();
@@ -60,7 +60,7 @@ public class GoodsCartServlet extends HttpServlet {
     		    map.put("gAmount", gAmount+gAmount2);
     		    int n = service.cartUpdate(map);
     		    
-            }else if(list.size() ==0 ){
+            }else if(list==null || list.size() ==0 ){
     	  		xx.setgAmount(gAmount);
     	  		xx.setgCode(gCode);
     	  		xx.setgCategory(gCategory);

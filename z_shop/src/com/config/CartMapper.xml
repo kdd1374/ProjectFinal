@@ -27,8 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  </insert>
    
     <select id="orderAllConfirm" parameterType="arraylist" resultType="CartDTO">
-	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
-	         addr1, addr2, phone, email1, email2
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid
 	  from cart
 	  where gCode
 	  IN
@@ -47,15 +46,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </delete>
    
    <select id="cartbygCode" parameterType="string" resultType="CartDTO">
-	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
-	         addr1, addr2, phone, email1, email2
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid
 	  from cart
 	  where gCode = #{gCode}
 	</select>
    
    <select id="retrieveUpdate" parameterType="string" resultType="CartDTO">
-	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
-	         addr1, addr2, phone, email1, email2
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid
 	  from cart
 	  where gCode = #{gCode}
 	</select>
@@ -73,15 +70,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </delete>
    
    <insert id="cartAdd" parameterType="CartDTO" >
-    insert into cart ( gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
-	         addr1, addr2, phone, email1, email2)
-    values (#{gCode},#{gCategory},#{gName},#{gPrice},#{gImage},#{gAmount},#{userid},
-           #{username},#{post},#{addr1},#{addr2},#{phone},#{email1},#{email2})
+    insert into cart ( gCode, gCategory, gName, gPrice, gImage, gAmount, userid)
+    values (#{gCode},#{gCategory},#{gName},#{gPrice},#{gImage},#{gAmount},#{userid})
    </insert>
 	
 	<select id="cartList" parameterType="string" resultType="CartDTO">
-	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid, username, post, 
-	         addr1, addr2, phone, email1, email2
+	  select gCode, gCategory, gName, gPrice, gImage, gAmount, userid
 	  from cart
 	  where userid = #{userid}
 	</select>

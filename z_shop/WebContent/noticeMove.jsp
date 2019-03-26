@@ -139,7 +139,7 @@ a:link {
 <div id="wrap-left">
 <div id="mainbanner">
 <a href="main.jsp">
-<img src="images/main.PNG" alt="공지사항" />
+<img src="images/zzzz.jpg" alt="공지사항" />
 </a>
 </div>
 
