@@ -69,12 +69,7 @@
 				 alert("아이디가 중복되었습니다");
 				 $("#user").focus();
 				 event.preventDefault();
-			 }else{
-			location.href="MemberSignupFormServlet?userid="+$("#userid").val()+"&password="+$("#password").val()
-					+"&username="+$("#username").val()+"&post="
-			+$("#sample4_postcode").val()+"&addr1="+$("#sample4_roadAddress").val()+"&addr2="+$("#sample4_jibunAddress").val()
-			+"&phone="+$("#phone").val()+"&email1="+$("#email1").val()+"&email2="+$("#email2").val();
-			 }
+		    }
 		}); 
 		//이메일 선택
 		 $("#selectemail").on("change",function(){
@@ -121,7 +116,7 @@
 <option value="gmail.com" id="gm">gmail.com</option>
 <option value="hanmail.net" id="hm">hanmail.net</option>
 </select><br><br>
-<input type="submit" value="회원가입">
+<input type="submit" value="회원가입" id="signup">
 
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
